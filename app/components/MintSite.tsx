@@ -24,6 +24,14 @@ const languages: Array<{ id: Lang; flag: string; label: string }> = [
   { id: "ru", flag: "🇷🇺", label: "Русский" },
 ];
 
+const occasionLabels: Record<Lang, string[]> = {
+  de: ["Hochzeit", "Verlobung", "Standesamtliche Trauung", "Hennaabend", "Private Feste"],
+  tr: ["Düğün", "Nişan", "Nikâh", "Kına Gecesi", "Özel Davetler"],
+  en: ["Wedding", "Engagement", "Civil Ceremony", "Henna Night", "Private Events"],
+  ar: ["زفاف", "خطوبة", "عقد قران", "ليلة الحناء", "مناسبات خاصة"],
+  ru: ["Свадьба", "Помолвка", "Регистрация", "Вечер хны", "Частные праздники"],
+};
+
 const copy = {
   de: {
     nav: ["Projekte", "Details", "Studio", "Anfrage"],
@@ -165,7 +173,7 @@ export function MintSite({ page }: { page: SitePage }) {
       </header>
 
       <main id="main">
-        {page === "home" && <Home t={t} open={setLightbox} />}
+        {page === "home" && <Home t={t} occasions={occasionLabels[lang]} open={setLightbox} />}
         {page === "projects" && <PortfolioPage kind="projects" t={t} filter={filter} setFilter={setFilter} items={filteredProjects} open={setLightbox} />}
         {page === "details" && <PortfolioPage kind="details" t={t} filter={filter} setFilter={setFilter} items={filteredDetails} open={setLightbox} />}
         {page === "studio" && <Studio t={t} />}
@@ -194,15 +202,15 @@ function SectionHeading({ kicker, title, text }: { kicker: string; title: string
   return <div className="section-heading"><p className="kicker">{kicker}</p><h2>{title}</h2>{text && <p className="section-heading__text">{text}</p>}</div>;
 }
 
-function Home({ t, open }: { t: typeof copy.de; open: (item: GalleryItem) => void }) {
+function Home({ t, occasions, open }: { t: typeof copy.de; occasions: string[]; open: (item: GalleryItem) => void }) {
   const featured = [backdropProjects[2], ceremonyDetails[20], giftDetails[13]];
   return <>
     <section className="hero">
       <div className="hero__copy"><p className="kicker">{t.eyebrow}</p><h1>{t.heroA}<em>{t.heroB}</em></h1><p>{t.heroText}</p><div className="button-row"><Link className="button button--gold" href="/projects">{t.explore} <span>↗</span></Link><Link className="text-link" href="/contact">{t.inquiry} <span>→</span></Link></div></div>
-      <div className="hero__visual"><div className="hero__frame"><video autoPlay muted loop playsInline poster="/videos/mint-events-film-poster.jpg" preload="metadata" aria-label="Mint Event dekorasyonlarından hareketli seçki"><source src="/videos/mint-events-film.mp4" type="video/mp4" /></video></div><div className="hero__floating"><Picture item={ceremonyDetails[20]} priority /><span>Mint Event · Vienna</span></div><div className="hero__seal">ME<span>Est. Vienna</span></div></div>
+      <div className="hero__visual"><div className="hero__frame"><video autoPlay muted loop playsInline poster="/videos/mint-events-film-poster.jpg" preload="metadata" aria-label="Mint Event dekorasyonlarından hareketli seçki"><source src="/videos/mint-events-film.mp4" type="video/mp4" /></video></div></div>
       <div className="hero__scroll">Scroll <span>↓</span></div>
     </section>
-    <section className="promise-strip"><span>Hochzeit</span><i>✦</i><span>Verlobung</span><i>✦</i><span>Nikâh</span><i>✦</i><span>Hennaabend</span><i>✦</i><span>Private Feste</span></section>
+    <section className="promise-strip">{occasions.map((occasion, index) => <span key={occasion}>{occasion}{index < occasions.length - 1 && <i aria-hidden="true">✦</i>}</span>)}</section>
     <section className="intro-section"><SectionHeading kicker={t.signature} title={t.signatureTitle} text={t.signatureText} /><div className="intro-collage"><div><Picture item={backdropProjects[8]} /></div><div><Picture item={giftDetails[0]} /></div><p>Vienna<br />with feeling</p></div></section>
     <section className="featured-section"><div className="featured-top"><SectionHeading kicker={t.selected} title={t.selectedTitle} /><Link className="text-link" href="/projects">{t.viewAll} <span>→</span></Link></div><div className="featured-grid">{featured.map((item, index) => <article key={item.id} className={`feature-card feature-card--${index + 1}`}><button onClick={() => open(item)} aria-label={`${t.imageOpen}: ${item.title}`}><Picture item={item} /><span>{String(index + 1).padStart(2, "0")}</span></button><p>{item.tag}</p><h3>{item.title}</h3></article>)}</div></section>
     <section className="services-section"><SectionHeading kicker={t.services} title={t.servicesTitle} /><div className="service-grid"><Service number="01" title={t.cake} text={t.cakeText} symbol="◇" /><Service number="02" title={t.photo} text={t.photoText} symbol="◎" /><Service number="03" title={t.invite} text={t.inviteText} symbol="✦" featured /></div></section>
