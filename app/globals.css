@@ -32,6 +32,9 @@ button { color: inherit; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
 .site-header { position: relative; z-index: 30; max-width: 1480px; min-height: 104px; margin: 0 auto; padding: 1.35rem clamp(1.2rem, 4vw, 4.5rem); display: grid; grid-template-columns: 180px 1fr auto; align-items: center; gap: 2rem; }
+.site-header--overlay { position: absolute; inset: 0 0 auto; width: 100%; color: #fff8ea; }
+.site-header--overlay .language-picker select { color: #fff8ea; border-color: rgba(255,255,255,.3); background: rgba(17,28,25,.3); }
+.site-header--overlay .language-picker select option { color: var(--ink); background: var(--paper); }
 .brand { width: 144px; height: 62px; display: block; }
 .brand img { object-fit: contain; object-position: left center; }
 .main-nav { justify-self: center; display: flex; gap: clamp(1.4rem, 3.2vw, 3.2rem); align-items: center; }
@@ -55,17 +58,17 @@ h1, h2, h3 { font-family: "Iowan Old Style", Baskerville, Georgia, "Times New Ro
 .text-link span, .button span { color: var(--gold-light); transition: transform .2s ease; }
 .text-link:hover span, .button:hover span { transform: translateX(3px); }
 
-.hero { position: relative; max-width: 1480px; min-height: min(800px, calc(100vh - 104px)); margin: 0 auto; padding: clamp(3rem, 7vw, 7rem) clamp(1.2rem, 4vw, 4.5rem) 6rem; display: grid; grid-template-columns: minmax(0, .92fr) minmax(420px, 1.08fr); align-items: center; gap: clamp(3rem, 8vw, 8rem); }
-.hero::before { content: ""; position: absolute; width: 19rem; height: 19rem; left: -10rem; top: 18%; border: 1px solid rgba(180,145,84,.25); border-radius: 50%; }
+.hero { position: relative; min-height: 100svh; padding: clamp(9rem, 16vh, 12rem) clamp(1.2rem, 7vw, 7.5rem) clamp(6rem, 10vh, 8rem); display: flex; align-items: center; isolation: isolate; overflow: hidden; color: #fff8ea; }
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(10,18,16,.78) 0%, rgba(12,20,18,.58) 42%, rgba(12,18,16,.18) 78%, rgba(12,18,16,.25) 100%), linear-gradient(0deg, rgba(9,15,13,.4), transparent 55%); }
+.hero__background { position: absolute; inset: 0; z-index: -2; }
+.hero__background video { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .hero__copy { position: relative; z-index: 2; }
-.hero h1 { max-width: 680px; font-size: clamp(3.5rem, 6.6vw, 7.2rem); line-height: .92; letter-spacing: -.045em; }
-.hero h1 em { display: block; color: var(--green); font-weight: 400; }
-.hero__copy > p:not(.kicker) { max-width: 610px; margin: 2rem 0 0; color: #5e5750; font-size: clamp(1rem, 1.25vw, 1.2rem); line-height: 1.75; }
-.hero__visual { position: relative; justify-self: stretch; height: clamp(500px, 62vw, 690px); max-height: 720px; }
-.hero__frame { position: absolute; inset: 0 0 3rem 0; overflow: hidden; border-radius: 48% 48% 1rem 1rem; box-shadow: var(--shadow); }
-.hero__frame video { width: 100%; height: 100%; object-fit: cover; object-position: center; }
-.hero__frame::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(17,14,10,.22)); }
-.hero__scroll { position: absolute; bottom: 1.5rem; left: clamp(1.2rem, 4vw, 4.5rem); color: #7b7066; font-size: .62rem; text-transform: uppercase; letter-spacing: .2em; writing-mode: vertical-rl; display: flex; align-items: center; gap: .7rem; }
+.hero .kicker { color: var(--gold-light); }
+.hero h1 { max-width: 860px; font-size: clamp(3.5rem, 6.6vw, 7.2rem); line-height: .92; letter-spacing: -.045em; text-shadow: 0 5px 32px rgba(0,0,0,.22); }
+.hero h1 em { display: block; color: #f1ddb7; font-weight: 400; }
+.hero__copy > p:not(.kicker) { max-width: 640px; margin: 2rem 0 0; color: rgba(255,248,234,.82); font-size: clamp(1rem, 1.25vw, 1.2rem); line-height: 1.75; text-shadow: 0 2px 18px rgba(0,0,0,.28); }
+.hero .text-link { color: #fff8ea; border-color: rgba(255,248,234,.5); }
+.hero__scroll { position: absolute; bottom: 1.5rem; left: clamp(1.2rem, 4vw, 4.5rem); color: rgba(255,248,234,.7); font-size: .62rem; text-transform: uppercase; letter-spacing: .2em; writing-mode: vertical-rl; display: flex; align-items: center; gap: .7rem; }
 .hero__scroll span { color: var(--gold); }
 
 .promise-strip { background: var(--green); color: #f5ead9; padding: 1.15rem 2rem; display: flex; justify-content: center; align-items: center; gap: clamp(1rem, 3vw, 3rem); white-space: nowrap; overflow: hidden; font-family: Georgia, serif; font-style: italic; font-size: 1.05rem; }
@@ -188,8 +191,7 @@ h1, h2, h3 { font-family: "Iowan Old Style", Baskerville, Georgia, "Times New Ro
   .language-picker { grid-column: 3; grid-row: 1; }
   .main-nav { position: absolute; top: 82px; left: 1rem; right: 1rem; display: none; padding: 1rem; border: 1px solid rgba(255,255,255,.7); background: rgba(246,240,230,.96); backdrop-filter: blur(20px); box-shadow: var(--shadow); }
   .main-nav.is-open { display: grid; }
-  .hero { grid-template-columns: 1fr; padding-top: 3rem; }
-  .hero__visual { width: min(760px, 100%); justify-self: end; }
+  .site-header--overlay .main-nav.is-open { color: var(--ink); }
   .intro-section { grid-template-columns: 1fr; }
   .intro-collage { min-width: 0; }
   .page-hero { grid-template-columns: 1fr; }
@@ -207,9 +209,8 @@ h1, h2, h3 { font-family: "Iowan Old Style", Baskerville, Georgia, "Times New Ro
   .brand { width: 105px; height: 55px; }
   .language-picker select { width: 74px; padding: .65rem 1.4rem .65rem .65rem; font-size: 0; }
   .language-picker select option { font-size: .72rem; }
-  .hero { min-height: auto; padding: 3.5rem 1rem 5rem; gap: 3rem; }
+  .hero { min-height: 100svh; padding: 8.5rem 1rem 5rem; }
   .hero h1 { font-size: clamp(3.2rem, 15vw, 5rem); }
-  .hero__visual { height: 510px; }
   .hero__scroll { display: none; }
   .promise-strip { justify-content: flex-start; }
   .intro-section, .featured-section, .services-section, .portfolio-section, .values-section { padding-left: 1rem; padding-right: 1rem; }

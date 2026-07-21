@@ -156,9 +156,9 @@ export function MintSite({ page }: { page: SitePage }) {
   return (
     <div className="site-shell" dir={rtl ? "rtl" : "ltr"}>
       <a className="skip-link" href="#main">Skip to content</a>
-      <header className="site-header">
+      <header className={page === "home" ? "site-header site-header--overlay" : "site-header"}>
         <Link className="brand" href="/" aria-label="Mint Event home">
-          <img src="/brand/mintevent-logo-green.svg" alt="Mint Event" />
+          <img src={page === "home" ? "/brand/mintevent-logo-cream.svg" : "/brand/mintevent-logo-green.svg"} alt="Mint Event" />
         </Link>
         <button className="menu-button" onClick={() => setMenuOpen((value) => !value)} aria-expanded={menuOpen} aria-label={t.menu}>☰</button>
         <nav className={menuOpen ? "main-nav is-open" : "main-nav"} aria-label="Main navigation">
@@ -206,8 +206,8 @@ function Home({ t, occasions, open }: { t: typeof copy.de; occasions: string[]; 
   const featured = [backdropProjects[2], ceremonyDetails[20], giftDetails[13]];
   return <>
     <section className="hero">
+      <div className="hero__background"><video autoPlay muted loop playsInline poster="/videos/mint-events-film-poster.jpg" preload="metadata" aria-hidden="true"><source src="/videos/mint-events-film.mp4" type="video/mp4" /></video></div>
       <div className="hero__copy"><p className="kicker">{t.eyebrow}</p><h1>{t.heroA}<em>{t.heroB}</em></h1><p>{t.heroText}</p><div className="button-row"><Link className="button button--gold" href="/projects">{t.explore} <span>↗</span></Link><Link className="text-link" href="/contact">{t.inquiry} <span>→</span></Link></div></div>
-      <div className="hero__visual"><div className="hero__frame"><video autoPlay muted loop playsInline poster="/videos/mint-events-film-poster.jpg" preload="metadata" aria-label="Mint Event dekorasyonlarından hareketli seçki"><source src="/videos/mint-events-film.mp4" type="video/mp4" /></video></div></div>
       <div className="hero__scroll">Scroll <span>↓</span></div>
     </section>
     <section className="promise-strip">{occasions.map((occasion, index) => <span key={occasion}>{occasion}{index < occasions.length - 1 && <i aria-hidden="true">✦</i>}</span>)}</section>
