@@ -199,7 +199,7 @@ function Home({ t, open }: { t: typeof copy.de; open: (item: GalleryItem) => voi
   return <>
     <section className="hero">
       <div className="hero__copy"><p className="kicker">{t.eyebrow}</p><h1>{t.heroA}<em>{t.heroB}</em></h1><p>{t.heroText}</p><div className="button-row"><Link className="button button--gold" href="/projects">{t.explore} <span>↗</span></Link><Link className="text-link" href="/contact">{t.inquiry} <span>→</span></Link></div></div>
-      <div className="hero__visual"><div className="hero__frame"><Picture item={backdropProjects[2]} priority /></div><div className="hero__floating"><Picture item={ceremonyDetails[20]} priority /><span>Mint Event · Vienna</span></div><div className="hero__seal">ME<span>Est. Vienna</span></div></div>
+      <div className="hero__visual"><div className="hero__frame"><video autoPlay muted loop playsInline poster="/videos/mint-events-film-poster.jpg" preload="metadata" aria-label="Mint Event dekorasyonlarından hareketli seçki"><source src="/videos/mint-events-film.mp4" type="video/mp4" /></video></div><div className="hero__floating"><Picture item={ceremonyDetails[20]} priority /><span>Mint Event · Vienna</span></div><div className="hero__seal">ME<span>Est. Vienna</span></div></div>
       <div className="hero__scroll">Scroll <span>↓</span></div>
     </section>
     <section className="promise-strip"><span>Hochzeit</span><i>✦</i><span>Verlobung</span><i>✦</i><span>Nikâh</span><i>✦</i><span>Hennaabend</span><i>✦</i><span>Private Feste</span></section>
