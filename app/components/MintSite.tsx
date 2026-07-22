@@ -29,15 +29,65 @@ const languages: Array<{ id: Lang; flag: string; label: string }> = [
   { id: "ru", flag: "🇷🇺", label: "Русский" },
 ];
 
-const categoryLabels: Record<Lang, { welcome: string; reception: string; gifts: string; rental: string }> = {
-  de: { welcome: "Tischbegrüßung", reception: "Empfang", gifts: "Gastgeschenke", rental: "Miete" },
-  tr: { welcome: "Masa Karşılama", reception: "Karşılama", gifts: "Hediyelikler", rental: "Kiralama" },
-  en: { welcome: "Welcome Table", reception: "Reception", gifts: "Guest Favours", rental: "Hire" },
-  ar: { welcome: "طاولة الترحيب", reception: "الاستقبال", gifts: "هدايا الضيوف", rental: "الإيجار" },
-  ru: { welcome: "Стол приветствия", reception: "Приём", gifts: "Подарки гостям", rental: "Аренда" },
+const categoryLabels: Record<Lang, { gifts: string; rental: string }> = {
+  de: { gifts: "Gastgeschenke", rental: "Miete" },
+  tr: { gifts: "Hediyelikler", rental: "Kiralama" },
+  en: { gifts: "Guest Favours", rental: "Hire" },
+  ar: { gifts: "هدايا الضيوف", rental: "الإيجار" },
+  ru: { gifts: "Подарки гостям", rental: "Аренда" },
 };
 
-const inspirationText = "Sitemizde sunulan ürünler ve konsept fikirleri, karar verme sürecinizi kolaylaştırmak ve sizlere ilham olmak amacıyla özenle hazırlanmıştır. Hayalinizdeki farklı fikir ve özel istekleriniz için bizimle iletişime geçebilirsiniz; konseptinizi birlikte tasarlamaktan mutluluk duyarız.";
+const inspirationTexts: Record<Lang, string> = {
+  de: "Die auf unserer Website präsentierten Produkte und Konzeptideen wurden sorgfältig zusammengestellt, um Ihnen die Entscheidung zu erleichtern und Sie zu inspirieren. Für individuelle Ideen und besondere Wünsche können Sie uns jederzeit kontaktieren; wir freuen uns darauf, Ihr Konzept gemeinsam mit Ihnen zu gestalten.",
+  tr: "Sitemizde sunulan ürünler ve konsept fikirleri, karar verme sürecinizi kolaylaştırmak ve sizlere ilham olmak amacıyla özenle hazırlanmıştır. Hayalinizdeki farklı fikir ve özel istekleriniz için bizimle iletişime geçebilirsiniz; konseptinizi birlikte tasarlamaktan mutluluk duyarız.",
+  en: "The products and concept ideas presented on our website have been carefully curated to make your decision easier and inspire you. Contact us with your individual ideas and special requests; we would be delighted to design your concept together.",
+  ar: "تم إعداد المنتجات وأفكار التصاميم المعروضة في موقعنا بعناية لتسهيل اختياركم ومنحكم الإلهام. يمكنكم التواصل معنا لأفكاركم المختلفة وطلباتكم الخاصة؛ ويسعدنا أن نصمم مفهوم مناسبتكم معاً.",
+  ru: "Продукты и идеи оформления на нашем сайте тщательно подобраны, чтобы облегчить ваш выбор и подарить вдохновение. Свяжитесь с нами, если у вас есть особые идеи или пожелания; мы с радостью разработаем вашу концепцию вместе.",
+};
+
+const localeExtras: Record<Lang, { skip: string; scroll: string; feeling: [string, string]; city: string; address: string; occasions: string[] }> = {
+  de: { skip: "Zum Inhalt", scroll: "Scrollen", feeling: ["Wien", "mit Gefühl"], city: "Wien", address: "Wien, Österreich", occasions: ["Hochzeit", "Verlobung", "Hennaabend", "Dekoration"] },
+  tr: { skip: "İçeriğe geç", scroll: "Kaydır", feeling: ["Viyana", "duyguyla"], city: "Viyana", address: "Viyana, Avusturya", occasions: ["Düğün", "Nişan", "Kına Gecesi", "Dekorasyon"] },
+  en: { skip: "Skip to content", scroll: "Scroll", feeling: ["Vienna", "with feeling"], city: "Vienna", address: "Vienna, Austria", occasions: ["Wedding", "Engagement", "Henna Night", "Decoration"] },
+  ar: { skip: "انتقل إلى المحتوى", scroll: "مرر", feeling: ["فيينا", "بإحساس"], city: "فيينا", address: "فيينا، النمسا", occasions: ["زفاف", "خطوبة", "ليلة الحناء", "ديكور"] },
+  ru: { skip: "Перейти к содержанию", scroll: "Листайте", feeling: ["Вена", "с чувством"], city: "Вена", address: "Вена, Австрия", occasions: ["Свадьба", "Помолвка", "Вечер хны", "Декор"] },
+};
+
+const tagTranslations: Record<Lang, Record<string, string>> = {
+  de: { Verlobung: "Verlobung", Zeremonie: "Zeremonie", Feier: "Feier", Hochzeit: "Hochzeit", Hennaabend: "Hennaabend", "Evlilik Teklifi": "Heiratsantrag", "Masa Karşılama": "Tisch & Empfang", Tischdeko: "Tischdekoration", Empfang: "Empfang", "Stoffbeutel Monogram": "Stoffbeutel Monogramm", Gastgeschenk: "Gastgeschenk", "Gelin Yelpazesi": "Brautfächer", Kiralama: "Miete" },
+  tr: { Verlobung: "Nişan", Zeremonie: "Tören", Feier: "Kutlama", Hochzeit: "Düğün", Hennaabend: "Kına Gecesi", "Evlilik Teklifi": "Evlilik Teklifi", "Masa Karşılama": "Masa & Karşılama", Tischdeko: "Masa Dekoru", Empfang: "Karşılama", "Stoffbeutel Monogram": "Monogramlı Kumaş Kese", Gastgeschenk: "Hediyelik", "Gelin Yelpazesi": "Gelin Yelpazesi", Kiralama: "Kiralama" },
+  en: { Verlobung: "Engagement", Zeremonie: "Ceremony", Feier: "Celebration", Hochzeit: "Wedding", Hennaabend: "Henna Night", "Evlilik Teklifi": "Marriage Proposal", "Masa Karşılama": "Table & Welcome", Tischdeko: "Table Decor", Empfang: "Welcome", "Stoffbeutel Monogram": "Monogram Fabric Pouch", Gastgeschenk: "Guest Favour", "Gelin Yelpazesi": "Bridal Fan", Kiralama: "Hire" },
+  ar: { Verlobung: "خطوبة", Zeremonie: "مراسم", Feier: "احتفال", Hochzeit: "زفاف", Hennaabend: "ليلة الحناء", "Evlilik Teklifi": "طلب زواج", "Masa Karşılama": "طاولة واستقبال", Tischdeko: "ديكور الطاولة", Empfang: "استقبال", "Stoffbeutel Monogram": "كيس قماشي بالأحرف", Gastgeschenk: "هدية للضيوف", "Gelin Yelpazesi": "مروحة العروس", Kiralama: "إيجار" },
+  ru: { Verlobung: "Помолвка", Zeremonie: "Церемония", Feier: "Праздник", Hochzeit: "Свадьба", Hennaabend: "Вечер хны", "Evlilik Teklifi": "Предложение руки и сердца", "Masa Karşılama": "Стол и welcome-зона", Tischdeko: "Декор стола", Empfang: "Welcome-зона", "Stoffbeutel Monogram": "Тканевый мешочек с монограммой", Gastgeschenk: "Подарок гостям", "Gelin Yelpazesi": "Веер невесты", Kiralama: "Аренда" },
+};
+
+const itemDescriptionTranslations: Record<Lang, Record<string, string>> = {
+  de: {
+    "Scarlet Feather": "Auf Wunsch personalisierbar", "Burgundy Tef": "Spezielles Tef für die Henna-Braut · Auf Wunsch personalisierbar", "Midnight Masks": "Auf Wunsch personalisierbar", "Instant Memories": "Inklusive 20 Aufnahmen", "Davul Kiralama": "Auf Wunsch personalisierbar", "rental-crimson-garden": "Roter Teppich und Henna-Thron können separat gemietet werden.", "A Little Scent": "Lippenkonturenstift",
+  },
+  tr: {
+    "Sarı & Orange Garden": "Çiçekler · Kumaş · Açık alan", "White Geometry": "Tekstil · Geometri · Beyaz", "Rosé & Gold": "Pudra pembe · Işık · Altın", "Luminous White": "Işık kemerleri · Çiçek tasarımı", "Butterfly Geometry": "Tekstil · Kelebek detayları", "White Circle": "Masa · Yuvarlak kemer · Çiçekler", "Pearl Light": "Sedef · Işık · Çiçek tasarımı", "Crimson Garden": "Taht · Halı · Fenerler", "rental-crimson-garden": "Kırmızı Halı ve Kına Tahtı ayrı ayrı kiralanabilir.", "Sage & Gold Garden": "Adaçayı yeşili · Altın · Çiçekler", "Davul & Drapes": "Taht · Davul · Kumaş", "Pampas Heart": "Kalp kemeri · Pampas · Kırmızı", "Heart Curtain": "Kumaş · Kalpler · Işık", "Blue Drapery": "Mavi · Pembe · Çiçekler", "Burgundy Circle": "Yuvarlak kemer · Kumaş · Çiçekler", "Kına Welcome": "Tüller · Ayna · Karşılama", "Burgundy Welcome": "Çiçekler · Kurdeleler · Mumlar", "Memory Table": "Kartlar · Mumlar · Çiçekler", "Burgundy Sweets": "Tatlılar · Tekstil · Mumlar", "Sweet Gathering": "Büfe · Çiçekler · Sunum", "Rustic Table": "Ahşap · Çiçekler · Mumlar", "At Your Place": "Peçete · İsim kartı", "Lace Welcome": "Dantel · Şövale · Çiçekler", "Butterfly Welcome": "Ayna · Kelebekler · Çiçekler", "Golden Reflection": "Kemer ayna · Altın · Çiçek tasarımı", "Castle Promise": "Göl · Şato · Evlilik teklifi", "Blush Bouquets": "Monogramlı kumaş kese", "Initials in Ivory": "Kişiselleştirme", "A Little Scent": "Dudak Kalemi", "Scarlet Feather": "İsteğe göre kişiselleştirme yapılır", "Burgundy Tef": "Kına gelinine özel tef · İsteğe göre kişiselleştirme yapılır", "Midnight Masks": "İsteğe göre kişiselleştirme yapılır", "Instant Memories": "20 poz ile birlikte", "Davul Kiralama": "İsteğe göre kişiselleştirme yapılır",
+  },
+  en: { "Scarlet Feather": "Personalisation available on request", "Burgundy Tef": "Special tef for the henna bride · Personalisation available on request", "Midnight Masks": "Personalisation available on request", "Instant Memories": "Includes 20 shots", "Davul Kiralama": "Personalisation available on request", "rental-crimson-garden": "The red carpet and henna throne can be hired separately.", "A Little Scent": "Lip liner" },
+  ar: { "Scarlet Feather": "يمكن تخصيصه حسب الطلب", "Burgundy Tef": "دف خاص لعروس الحناء · يمكن تخصيصه حسب الطلب", "Midnight Masks": "يمكن تخصيصه حسب الطلب", "Instant Memories": "يشمل 20 لقطة", "Davul Kiralama": "يمكن تخصيصه حسب الطلب", "rental-crimson-garden": "يمكن استئجار السجادة الحمراء وعرش الحناء بشكل منفصل.", "A Little Scent": "قلم تحديد الشفاه" },
+  ru: { "Scarlet Feather": "Персонализация по запросу", "Burgundy Tef": "Особый теф для невесты на вечере хны · Персонализация по запросу", "Midnight Masks": "Персонализация по запросу", "Instant Memories": "Включено 20 снимков", "Davul Kiralama": "Персонализация по запросу", "rental-crimson-garden": "Красную дорожку и трон для хны можно арендовать отдельно.", "A Little Scent": "Карандаш для губ" },
+};
+
+const catalogGroupTitles: Record<Lang, Record<string, string>> = {
+  de: { stoffbeutel: "Stoffbeutel & Monogramm", beauty: "Beauty-Details", clips: "Haarklammer-Beispiele", "hair-ties": "Haargummi-Beispiele", "small-gifts": "Kleine Geschenke", "halay-gift": "Personalisierte Halay-Tücher", "light-gifts": "Leuchtende Gastgeschenke", fans: "Fächer-Varianten", memories: "Erinnerungsecke", "henna-trays": "Henna-Tablett-Beispiele", "bridal-accessories": "Brautaccessoires", tef: "Tef-Vorlagen", halay: "Halay-Tuch-Beispiele", "ring-trays": "Ringtablett-Varianten", "henna-stage": "Henna-Thron & roter Teppich", davul: "Davul-Miete" },
+  tr: { stoffbeutel: "Kumaş Kese & Monogram", beauty: "Güzellik Detayları", clips: "Mandal Toka Örnekleri", "hair-ties": "Saç Lastiği Örnekleri", "small-gifts": "Küçük Hediyeler", "halay-gift": "Kişiye Özel Halay Mendili", "light-gifts": "Işıklı Hediyelikler", fans: "Yelpaze Çeşitleri Örnekleri", memories: "Anı Köşesi", "henna-trays": "Kına Tepsisi Örnekleri", "bridal-accessories": "Gelin Aksesuarları", tef: "Tef Örnekleri", halay: "Halay Mendili Örnekleri", "ring-trays": "Yüzük Tepsisi Çeşitleri Örnekleri", "henna-stage": "Kına Tahtı & Kırmızı Halı", davul: "Davul Kiralama" },
+  en: { stoffbeutel: "Fabric Pouches & Monograms", beauty: "Beauty Details", clips: "Hair Clip Examples", "hair-ties": "Hair Tie Examples", "small-gifts": "Small Favours", "halay-gift": "Personalised Halay Scarves", "light-gifts": "Illuminated Favours", fans: "Fan Variations", memories: "Memory Corner", "henna-trays": "Henna Tray Examples", "bridal-accessories": "Bridal Accessories", tef: "Tef Examples", halay: "Halay Scarf Examples", "ring-trays": "Ring Tray Variations", "henna-stage": "Henna Throne & Red Carpet", davul: "Davul Hire" },
+  ar: { stoffbeutel: "أكياس قماشية وأحرف", beauty: "تفاصيل الجمال", clips: "أمثلة مشابك الشعر", "hair-ties": "أمثلة ربطات الشعر", "small-gifts": "هدايا صغيرة", "halay-gift": "مناديل هالاي مخصصة", "light-gifts": "هدايا مضيئة", fans: "نماذج المراوح", memories: "ركن الذكريات", "henna-trays": "أمثلة صواني الحناء", "bridal-accessories": "إكسسوارات العروس", tef: "أمثلة الدف", halay: "أمثلة مناديل الهالاي", "ring-trays": "نماذج صواني الخواتم", "henna-stage": "عرش الحناء والسجادة الحمراء", davul: "استئجار الطبل" },
+  ru: { stoffbeutel: "Тканевые мешочки и монограммы", beauty: "Бьюти-детали", clips: "Примеры заколок", "hair-ties": "Примеры резинок", "small-gifts": "Небольшие подарки", "halay-gift": "Именные платки для халай", "light-gifts": "Светящиеся подарки", fans: "Варианты вееров", memories: "Уголок воспоминаний", "henna-trays": "Примеры подносов для хны", "bridal-accessories": "Аксессуары невесты", tef: "Примеры тефа", halay: "Примеры платков для халай", "ring-trays": "Варианты подносов для колец", "henna-stage": "Трон для хны и красная дорожка", davul: "Аренда давула" },
+};
+
+function localizeItem(item: GalleryItem, lang: Lang): GalleryItem {
+  return {
+    ...item,
+    tag: tagTranslations[lang][item.tag] ?? item.tag,
+    description: itemDescriptionTranslations[lang][item.id] ?? itemDescriptionTranslations[lang][item.title] ?? item.description,
+  };
+}
 
 const occasionLabels: Record<Lang, string[]> = {
   de: ["Hochzeit", "Verlobung", "Standesamtliche Trauung", "Hennaabend", "Private Feste"],
@@ -120,11 +170,12 @@ function Picture({ item, priority = false }: { item: GalleryItem; priority?: boo
   return <img src={galleryPath(item.kind, item.file)} alt={item.alt} loading={priority ? "eager" : "lazy"} decoding="async" />;
 }
 
-function Gallery({ items, onOpen, label }: { items: GalleryItem[]; onOpen: (item: GalleryItem) => void; label: string }) {
+function Gallery({ items, onOpen, label, lang }: { items: GalleryItem[]; onOpen: (item: GalleryItem) => void; label: string; lang: Lang }) {
   return (
     <div className="gallery-grid">
-      {items.map((item, index) => (
-        <article className={`gallery-card ${index % 5 === 0 ? "gallery-card--wide" : ""}`} key={item.id}>
+      {items.map((sourceItem, index) => {
+        const item = localizeItem(sourceItem, lang);
+        return <article className={`gallery-card ${index % 5 === 0 ? "gallery-card--wide" : ""}`} key={item.id}>
           <button className="gallery-card__image" onClick={() => onOpen(item)} aria-label={`${label}: ${item.title}`}>
             <Picture item={item} />
             <span className="gallery-card__zoom" aria-hidden="true">↗</span>
@@ -134,8 +185,8 @@ function Gallery({ items, onOpen, label }: { items: GalleryItem[]; onOpen: (item
             <h2>{item.title}</h2>
             <p>{item.description}</p>
           </div>
-        </article>
-      ))}
+        </article>;
+      })}
     </div>
   );
 }
@@ -147,6 +198,7 @@ export function MintSite({ page }: { page: SitePage }) {
   const [lightbox, setLightbox] = useState<GalleryItem | null>(null);
   const t = copy[lang] as typeof copy.de;
   const rtl = lang === "ar";
+  const lightboxItem = lightbox ? localizeItem(lightbox, lang) : null;
 
   useEffect(() => {
     const saved = window.localStorage.getItem("mint-lang") as Lang | null;
@@ -170,15 +222,13 @@ export function MintSite({ page }: { page: SitePage }) {
 
   const filteredProjects = useMemo(() => {
     if (filter === "backdrops") return decorBackdropProjects;
-    if (filter === "tables") return tableProjects;
-    if (filter === "welcome") return welcomeProjects;
-    if (filter === "reception") return receptionProjects;
+    if (filter === "tables") return [...tableProjects, ...welcomeProjects, ...receptionProjects];
     return allProjects;
   }, [filter]);
 
   return (
     <div className="site-shell" dir={rtl ? "rtl" : "ltr"}>
-      <a className="skip-link" href="#main">Skip to content</a>
+      <a className="skip-link" href="#main">{localeExtras[lang].skip}</a>
       <header className={page === "home" ? "site-header site-header--overlay" : "site-header"}>
         <Link className="brand" href="/" aria-label="Mint Event home">
           <img src={page === "home" ? "/brand/mintevent-logo-cream.svg" : "/brand/mintevent-logo-green.svg"} alt="Mint Event" />
@@ -196,25 +246,26 @@ export function MintSite({ page }: { page: SitePage }) {
       </header>
 
       <main id="main">
-        {page === "home" && <Home t={t} occasions={occasionLabels[lang]} open={setLightbox} />}
-        {page === "projects" && <PortfolioPage t={t} filter={filter} setFilter={setFilter} items={filteredProjects} open={setLightbox} labels={categoryLabels[lang]} />}
-        {page === "details" && <DetailsCatalog t={t} filter={filter} setFilter={setFilter} open={setLightbox} labels={categoryLabels[lang]} />}
-        {page === "studio" && <Studio t={t} />}
-        {page === "contact" && <Contact t={t} />}
+        {page === "home" && <Home t={t} occasions={occasionLabels[lang]} open={setLightbox} lang={lang} />}
+        {page === "projects" && <PortfolioPage t={t} filter={filter} setFilter={setFilter} items={filteredProjects} open={setLightbox} lang={lang} />}
+        {page === "details" && <DetailsCatalog t={t} filter={filter} setFilter={setFilter} open={setLightbox} labels={categoryLabels[lang]} lang={lang} />}
+        {page === "studio" && <Studio t={t} lang={lang} />}
+        {page === "contact" && <Contact t={t} lang={lang} />}
       </main>
 
+      <InspirationBanner lang={lang} />
       <footer className="site-footer">
         <div><img src="/brand/mintevent-logo-cream.svg" alt="Mint Event" /><p>{t.footer}</p></div>
         <div className="footer-links">{navLinks.map((href, index) => <Link key={href} href={href}>{t.nav[index]}</Link>)}</div>
         <div><a href="mailto:mintevent@outlook.com">mintevent@outlook.com</a><a href="https://www.instagram.com/mintevents.vienna/" target="_blank" rel="noreferrer">Instagram ↗</a></div>
-        <p className="copyright">© 2026 Mint Event · Vienna</p>
+        <p className="copyright">© 2026 Mint Event · {localeExtras[lang].city}</p>
       </footer>
 
-      {lightbox && <div className="lightbox" role="dialog" aria-modal="true" aria-label={lightbox.title} onClick={() => setLightbox(null)}>
+      {lightboxItem && <div className="lightbox" role="dialog" aria-modal="true" aria-label={lightboxItem.title} onClick={() => setLightbox(null)}>
         <button className="lightbox__close" onClick={() => setLightbox(null)} aria-label={t.close}>×</button>
         <div className="lightbox__content" onClick={(event) => event.stopPropagation()}>
-          <Picture item={lightbox} priority />
-          <div><span>{lightbox.tag}</span><h2>{lightbox.title}</h2><p>{lightbox.description}</p></div>
+          <Picture item={lightboxItem} priority />
+          <div>{lightboxItem.tag && <span>{lightboxItem.tag}</span>}<h2>{lightboxItem.title}</h2>{lightboxItem.description && <p>{lightboxItem.description}</p>}</div>
         </div>
       </div>}
     </div>
@@ -225,17 +276,17 @@ function SectionHeading({ kicker, title, text }: { kicker: string; title: string
   return <div className="section-heading"><p className="kicker">{kicker}</p><h2>{title}</h2>{text && <p className="section-heading__text">{text}</p>}</div>;
 }
 
-function Home({ t, occasions, open }: { t: typeof copy.de; occasions: string[]; open: (item: GalleryItem) => void }) {
+function Home({ t, occasions, open, lang }: { t: typeof copy.de; occasions: string[]; open: (item: GalleryItem) => void; lang: Lang }) {
   const featured = [backdropProjects[2], ceremonyDetails[20], giftDetails[9]];
   return <>
     <section className="hero">
       <div className="hero__background"><video autoPlay muted loop playsInline poster="/videos/mint-events-film-poster.jpg" preload="metadata" aria-hidden="true"><source src="/videos/mint-events-film.mp4" type="video/mp4" /></video></div>
       <div className="hero__copy"><p className="kicker">{t.eyebrow}</p><h1>{t.heroA}<em>{t.heroB}</em></h1><p>{t.heroText}</p><div className="button-row"><Link className="button button--gold" href="/projects">{t.explore} <span>↗</span></Link><Link className="text-link" href="/contact">{t.inquiry} <span>→</span></Link></div></div>
-      <div className="hero__scroll">Scroll <span>↓</span></div>
+      <div className="hero__scroll">{localeExtras[lang].scroll} <span>↓</span></div>
     </section>
     <section className="promise-strip">{occasions.map((occasion, index) => <span key={occasion}>{occasion}{index < occasions.length - 1 && <i aria-hidden="true">✦</i>}</span>)}</section>
-    <section className="intro-section"><SectionHeading kicker={t.signature} title={t.signatureTitle} text={t.signatureText} /><div className="intro-collage"><div><Picture item={backdropProjects[8]} /></div><div><Picture item={giftDetails[0]} /></div><p>Vienna<br />with feeling</p></div></section>
-    <section className="featured-section"><div className="featured-top"><SectionHeading kicker={t.selected} title={t.selectedTitle} /><Link className="text-link" href="/projects">{t.viewAll} <span>→</span></Link></div><div className="featured-grid">{featured.map((item, index) => <article key={item.id} className={`feature-card feature-card--${index + 1}`}><button onClick={() => open(item)} aria-label={`${t.imageOpen}: ${item.title}`}><Picture item={item} /><span>{String(index + 1).padStart(2, "0")}</span></button><p>{item.tag}</p><h3>{item.title}</h3></article>)}</div></section>
+    <section className="intro-section"><SectionHeading kicker={t.signature} title={t.signatureTitle} text={t.signatureText} /><div className="intro-collage"><div><Picture item={backdropProjects[8]} /></div><div><Picture item={giftDetails[0]} /></div><p>{localeExtras[lang].feeling[0]}<br />{localeExtras[lang].feeling[1]}</p></div></section>
+    <section className="featured-section"><div className="featured-top"><SectionHeading kicker={t.selected} title={t.selectedTitle} /><Link className="text-link" href="/projects">{t.viewAll} <span>→</span></Link></div><div className="featured-grid">{featured.map((sourceItem, index) => { const item = localizeItem(sourceItem, lang); return <article key={item.id} className={`feature-card feature-card--${index + 1}`}><button onClick={() => open(item)} aria-label={`${t.imageOpen}: ${item.title}`}><Picture item={item} /><span>{String(index + 1).padStart(2, "0")}</span></button>{item.tag && <p>{item.tag}</p>}<h3>{item.title}</h3></article>; })}</div></section>
     <section className="services-section"><SectionHeading kicker={t.services} title={t.servicesTitle} /><div className="service-grid"><Service number="01" title={t.cake} text={t.cakeText} symbol="◇" /><Service number="02" title={t.photo} text={t.photoText} symbol="◎" /><Service number="03" title={t.invite} text={t.inviteText} symbol="✦" featured /></div></section>
     <Cta t={t} />
   </>;
@@ -245,17 +296,17 @@ function Service({ number, title, text, symbol, featured = false }: { number: st
   return <article className={featured ? "service-card service-card--featured" : "service-card"}><span className="service-card__number">{number}</span><span className="service-card__symbol">{symbol}</span><h3>{title}</h3><p>{text}</p></article>;
 }
 
-function PortfolioPage({ t, filter, setFilter, items, open, labels }: { t: typeof copy.de; filter: string; setFilter: (value: string) => void; items: GalleryItem[]; open: (item: GalleryItem) => void; labels: (typeof categoryLabels)[Lang] }) {
-  const filters = [["all", t.filters.all], ["backdrops", t.filters.backdrops], ["tables", t.filters.tables], ["welcome", labels.welcome], ["reception", labels.reception]];
+function PortfolioPage({ t, filter, setFilter, items, open, lang }: { t: typeof copy.de; filter: string; setFilter: (value: string) => void; items: GalleryItem[]; open: (item: GalleryItem) => void; lang: Lang }) {
+  const filters = [["all", t.filters.all], ["backdrops", t.filters.backdrops], ["tables", t.filters.tables]];
   const heroItem = backdropProjects[7];
   return <>
     <section className="page-hero"><div className="page-hero__copy"><p className="kicker">{t.projectsKicker}</p><h1>{t.projectsTitle}</h1><p>{t.projectsText}</p><span className="page-count">{allProjects.length} · Mint Event</span></div><div className="page-hero__image"><Picture item={heroItem} priority /></div></section>
-    <section className="portfolio-section"><div className="filter-bar" role="group" aria-label="Gallery filters">{filters.map(([value, label]) => <button key={value} className={filter === value ? "active" : ""} onClick={() => setFilter(value)}>{label}</button>)}</div><Gallery items={items} onOpen={open} label={t.imageOpen} /></section>
+    <section className="portfolio-section"><div className="filter-bar" role="group" aria-label="Gallery filters">{filters.map(([value, label]) => <button key={value} className={filter === value ? "active" : ""} onClick={() => setFilter(value)}>{label}</button>)}</div><Gallery items={items} onOpen={open} label={t.imageOpen} lang={lang} /></section>
     <Cta t={t} />
   </>;
 }
 
-function DetailsCatalog({ t, filter, setFilter, open, labels }: { t: typeof copy.de; filter: string; setFilter: (value: string) => void; open: (item: GalleryItem) => void; labels: (typeof categoryLabels)[Lang] }) {
+function DetailsCatalog({ t, filter, setFilter, open, labels, lang }: { t: typeof copy.de; filter: string; setFilter: (value: string) => void; open: (item: GalleryItem) => void; labels: (typeof categoryLabels)[Lang]; lang: Lang }) {
   const active = filter === "ceremony" ? "ceremony" : "gifts";
   const groups = active === "gifts" ? giftCatalogGroups : rentalCatalogGroups;
   const count = groups.reduce((total, group) => total + group.items.length, 0);
@@ -263,44 +314,48 @@ function DetailsCatalog({ t, filter, setFilter, open, labels }: { t: typeof copy
   return <>
     <section className="page-hero"><div className="page-hero__copy"><p className="kicker">{t.detailsKicker}</p><h1>{t.detailsTitle}</h1><p>{t.detailsText}</p><span className="page-count">{count} · Mint Event</span></div><div className="page-hero__image"><Picture item={ceremonyDetails[3]} priority /></div></section>
     <section className="catalog-section">
-      <aside className="catalog-note"><span aria-hidden="true">✦</span><p><em>{inspirationText}</em></p></aside>
       <div className="catalog-tabs" role="tablist" aria-label="Detaylar kategorileri">
         <button role="tab" aria-selected={active === "gifts"} className={active === "gifts" ? "active" : ""} onClick={() => setFilter("gifts")}>{labels.gifts}</button>
         <button role="tab" aria-selected={active === "ceremony"} className={active === "ceremony" ? "active" : ""} onClick={() => setFilter("ceremony")}>{labels.rental}</button>
       </div>
-      <div className="catalog-groups">{groups.map((group, index) => <CatalogSection key={group.id} group={group} index={index} onOpen={open} label={t.imageOpen} />)}</div>
+      <div className="catalog-groups">{groups.map((group, index) => <CatalogSection key={group.id} group={group} index={index} onOpen={open} label={t.imageOpen} lang={lang} />)}</div>
     </section>
     <Cta t={t} />
   </>;
 }
 
-function CatalogSection({ group, index, onOpen, label }: { group: CatalogGroup; index: number; onOpen: (item: GalleryItem) => void; label: string }) {
+function CatalogSection({ group, index, onOpen, label, lang }: { group: CatalogGroup; index: number; onOpen: (item: GalleryItem) => void; label: string; lang: Lang }) {
+  const groupTitle = catalogGroupTitles[lang][group.id] ?? group.title;
   return <section className="catalog-group" aria-labelledby={`catalog-${group.id}`}>
-    <header className="catalog-group__heading"><span>{String(index + 1).padStart(2, "0")}</span><h2 id={`catalog-${group.id}`}>{group.title}</h2><i>{group.items.length}</i></header>
-    <div className="catalog-group__grid">{group.items.map((item) => <article className="product-card" key={`${group.id}-${item.id}`}>
+    <header className="catalog-group__heading"><span>{String(index + 1).padStart(2, "0")}</span><h2 id={`catalog-${group.id}`}>{groupTitle}</h2><i>{group.items.length}</i></header>
+    <div className="catalog-group__grid">{group.items.map((sourceItem) => { const item = localizeItem(sourceItem, lang); return <article className="product-card" key={`${group.id}-${item.id}`}>
       <button className="product-card__image" onClick={() => onOpen(item)} aria-label={`${label}: ${item.title}`}><Picture item={item} /><span aria-hidden="true">↗</span></button>
       <div className="product-card__body">{item.tag && <span>{item.tag}</span>}<h3>{item.title}</h3>{item.description && <p className={item.id === "rental-crimson-garden" ? "product-card__note product-card__note--italic" : "product-card__note"}>{item.description}</p>}</div>
-    </article>)}</div>
+    </article>; })}</div>
   </section>;
 }
 
-function Studio({ t }: { t: typeof copy.de }) {
+function Studio({ t, lang }: { t: typeof copy.de; lang: Lang }) {
   return <>
     <section className="studio-hero"><div><p className="kicker">{t.studioKicker}</p><h1>{t.studioTitle}</h1><p>{t.studioText}</p></div><div className="studio-hero__images"><div><Picture item={ceremonyDetails[20]} /></div><div><Picture item={giftDetails[10]} /></div></div></section>
     <section className="values-section"><SectionHeading kicker="01 · 02 · 03" title={t.signatureTitle} /><div className="value-list">{t.values.map((value, index) => <article key={value}><span>0{index + 1}</span><h3>{value}</h3><p>{t.valueText[index]}</p></article>)}</div></section>
-    <section className="studio-quote"><p>“</p><h2>{t.studioText}</h2><span>Mint Event · Vienna</span></section>
+    <section className="studio-quote"><p>“</p><h2>{t.studioText}</h2><span>Mint Event · {localeExtras[lang].city}</span></section>
     <Cta t={t} />
   </>;
 }
 
-function Contact({ t }: { t: typeof copy.de }) {
+function Contact({ t, lang }: { t: typeof copy.de; lang: Lang }) {
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const body = [t.name, data.get("name"), t.email, data.get("email"), t.date, data.get("date"), t.place, data.get("place"), t.occasion, data.get("occasion"), "", t.idea, data.get("idea")].join("%0D%0A");
     window.location.href = `mailto:mintevent@outlook.com?subject=Mint Event · ${encodeURIComponent(String(data.get("occasion") || "Anfrage"))}&body=${body}`;
   };
-  return <section className="contact-page"><div className="contact-intro"><p className="kicker">{t.contactKicker}</p><h1>{t.contactTitle}</h1><p>{t.contactText}</p><div className="contact-details"><a href="mailto:mintevent@outlook.com">mintevent@outlook.com</a><a href="https://www.instagram.com/mintevents.vienna/" target="_blank" rel="noreferrer">@mintevents.vienna ↗</a><span>Wien, Österreich</span></div></div><form className="contact-form" onSubmit={submit}><p className="kicker">Mint Event</p><h2>{t.formTitle}</h2><div className="form-grid"><label>{t.name}<input name="name" required autoComplete="name" /></label><label>{t.email}<input name="email" type="email" required autoComplete="email" /></label><label>{t.date}<input name="date" type="date" /></label><label>{t.place}<input name="place" /></label></div><label>{t.occasion}<select name="occasion"><option>Hochzeit / Düğün</option><option>Verlobung / Nişan</option><option>Hennaabend / Kına</option><option>Dekoration</option><option>{t.invite}</option><option>{t.photo}</option><option>{t.cake}</option></select></label><label>{t.idea}<textarea name="idea" rows={5} /></label><button className="button button--gold" type="submit">{t.send} <span>↗</span></button></form></section>;
+  return <section className="contact-page"><div className="contact-intro"><p className="kicker">{t.contactKicker}</p><h1>{t.contactTitle}</h1><p>{t.contactText}</p><div className="contact-details"><a href="mailto:mintevent@outlook.com">mintevent@outlook.com</a><a href="https://www.instagram.com/mintevents.vienna/" target="_blank" rel="noreferrer">@mintevents.vienna ↗</a><span>{localeExtras[lang].address}</span></div></div><form className="contact-form" onSubmit={submit}><p className="kicker">Mint Event</p><h2>{t.formTitle}</h2><div className="form-grid"><label>{t.name}<input name="name" required autoComplete="name" /></label><label>{t.email}<input name="email" type="email" required autoComplete="email" /></label><label>{t.date}<input name="date" type="date" /></label><label>{t.place}<input name="place" /></label></div><label>{t.occasion}<select name="occasion">{localeExtras[lang].occasions.map((occasion) => <option key={occasion}>{occasion}</option>)}<option>{t.invite}</option><option>{t.photo}</option><option>{t.cake}</option></select></label><label>{t.idea}<textarea name="idea" rows={5} /></label><button className="button button--gold" type="submit">{t.send} <span>↗</span></button></form></section>;
+}
+
+function InspirationBanner({ lang }: { lang: Lang }) {
+  return <aside className="inspiration-banner"><span aria-hidden="true">✦</span><p><em>{inspirationTexts[lang]}</em></p></aside>;
 }
 
 function Cta({ t }: { t: typeof copy.de }) {

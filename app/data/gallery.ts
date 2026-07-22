@@ -66,7 +66,7 @@ export const receptionProjects = createItems("reception", [
   { file: "lace-welcome", title: "Lace Welcome", tag: "Empfang", description: "Spitze · Staffelei · Blumen", alt: "Willkommensschild mit Spitze, Blumen und goldener Staffelei" },
   { file: "butterfly-mirror-welcome", title: "Butterfly Welcome", tag: "Empfang", description: "Spiegel · Schmetterlinge · Blumen", alt: "Verspiegeltes Willkommensschild mit Schmetterlingen und Blumen" },
   { file: "arched-mirror-welcome", title: "Golden Reflection", tag: "Empfang", description: "Bogenspiegel · Gold · Floristik", alt: "Goldener Bogenspiegel als elegante Empfangsdekoration" },
-  { file: "castle-proposal", title: "Castle Promise", tag: "Empfang", description: "See · Schloss · Heiratsantrag", alt: "Romantischer Heiratsantrag am See vor einem Schloss" },
+  { file: "castle-proposal", title: "Castle Promise", tag: "Evlilik Teklifi", description: "See · Schloss · Heiratsantrag", alt: "Romantischer Heiratsantrag am See vor einem Schloss" },
 ]);
 
 export const giftDetails = createItems("gifts", [
@@ -86,13 +86,13 @@ export const giftDetails = createItems("gifts", [
 export const ceremonyDetails = createItems("ceremony", [
   { file: "henna-tray", title: "Crimson Ritual", tag: "", description: "", alt: "Rotes florales Henna-Tablett mit Kerzen" },
   { file: "candle-tray", title: "Circle of Light", tag: "", description: "", alt: "Rundes rotes Kerzentablett für einen Hennaabend" },
-  { file: "red-fan", title: "Scarlet Feather", tag: "Gelin Yelpazesi", description: "İsteğe göre personalisierung (kişiselleştirme) yapılır", alt: "Roter Federfächer" },
-  { file: "calla-bouquet", title: "Calla Pearl", tag: "Kiralama", description: "", alt: "Weißer Calla-Brautstrauß mit Perlengriff" },
-  { file: "custom-tef", title: "Burgundy Tef", tag: "Kiralama", description: "Kına Geline Özel Tef - İsteğe göre personalisierung yapılır", alt: "Bordeauxfarbenes personalisiertes Tef" },
+  { file: "red-fan", title: "Scarlet Feather", tag: "Gelin Yelpazesi", description: "İsteğe göre kişiselleştirme yapılır", alt: "Roter Federfächer" },
+  { file: "calla-bouquet", title: "Calla Pearl", tag: "", description: "", alt: "Weißer Calla-Brautstrauß mit Perlengriff" },
+  { file: "custom-tef", title: "Burgundy Tef", tag: "Kiralama", description: "Kına gelinine özel tef · İsteğe göre kişiselleştirme yapılır", alt: "Bordeauxfarbenes personalisiertes Tef" },
   { file: "henna-coffee-set", title: "Henna Coffee", tag: "", description: "", alt: "Bordeaux-goldenes Henna-Kaffeeset" },
   { file: "white-tef", title: "White Satin Tef", tag: "", description: "", alt: "Weißes Tef mit Satinband" },
   { file: "lace-tef", title: "Ivory Lace Tef", tag: "", description: "", alt: "Cremefarbenes Tef mit Spitze" },
-  { file: "sleep-masks", title: "Midnight Masks", tag: "", description: "Mit personalisierung yapılır", alt: "Schwarze herzförmige Schlafmasken zur Miete" },
+  { file: "sleep-masks", title: "Midnight Masks", tag: "", description: "İsteğe göre kişiselleştirme yapılır", alt: "Schwarze herzförmige Schlafmasken zur Miete" },
   { file: "red-headbands", title: "Crimson Crowns", tag: "", description: "", alt: "Rote florale Haarreifen" },
   { file: "white-halay", title: "White Halay", tag: "", description: "", alt: "Weiße Halay-Tücher an einem dekorativen Ständer" },
   { file: "dress-keepsakes", title: "Dress Keepsakes", tag: "", description: "", alt: "Bordeaux-grüne Halay-Mendili-Beispiele" },
@@ -107,9 +107,9 @@ export const ceremonyDetails = createItems("ceremony", [
   { file: "silver-ring-mirror", title: "Silver Promise", tag: "", description: "", alt: "Verspiegeltes Ringtablett mit silbernen Details" },
   { file: "gold-ring-boxes", title: "Golden Vow", tag: "", description: "", alt: "Goldene Glas-Ringboxen auf einem personalisierten Kissen" },
   { file: "gold-ring-tray", title: "Golden Initials", tag: "", description: "", alt: "Personalisiertes weiß-goldenes Ringtablett" },
-  { file: "instant-memories", title: "Instant Memories", tag: "", description: "", alt: "Bunte Sofortbild- und Fotoecke" },
+  { file: "instant-memories", title: "Instant Memories", tag: "", description: "20 poz ile birlikte", alt: "Bunte Sofortbild- und Fotoecke" },
   { file: "guestbook-corner", title: "Guestbook Corner", tag: "", description: "", alt: "Gästebuch- und Fotoecke" },
-  { file: "davul-personalized", title: "Davul Kiralama", tag: "Kiralama", description: "İsteğe göre kişiselleştirme yapılır", alt: "Kişiselleştirilebilir kiralık davul" },
+  { file: "davul-personalized", title: "Davul Kiralama", tag: "", description: "İsteğe göre kişiselleştirme yapılır", alt: "Kişiselleştirilebilir kiralık davul" },
 ]);
 
 const getGift = (title: string) => giftDetails.find((item) => item.title === title)!;
@@ -139,7 +139,7 @@ export const giftCatalogGroups: CatalogGroup[] = [
 const crimsonGardenRental: GalleryItem = {
   ...backdropProjects[7],
   id: "rental-crimson-garden",
-  tag: "Kiralama",
+  tag: "",
   description: "Kırmızı Halı ve Kına Tahtı ayrı ayrı kiralanabilir.",
 };
 
