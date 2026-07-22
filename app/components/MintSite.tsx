@@ -329,7 +329,7 @@ function DetailsCatalog({ t, filter, setFilter, open, labels, lang }: { t: typeo
         <button role="tab" aria-selected={active === "ceremony"} className={active === "ceremony" ? "active" : ""} onClick={() => setFilter("ceremony")}>{labels.rental}</button>
       </div>
       {active === "gifts"
-        ? <div className="catalog-flat-grid">{giftCatalogItems.map((item) => <ProductCard key={item.id} sourceItem={item} onOpen={open} label={t.imageOpen} lang={lang} />)}</div>
+        ? <div className="catalog-flat-grid">{giftCatalogItems.map((item) => <ProductCard key={item.id} sourceItem={item} onOpen={open} label={t.imageOpen} lang={lang} hideTag />)}</div>
         : <div className="catalog-groups">{rentalCatalogGroups.map((group, index) => <CatalogSection key={group.id} group={group} index={index} onOpen={open} label={t.imageOpen} lang={lang} />)}</div>}
     </section>
     <Cta t={t} />
@@ -344,11 +344,11 @@ function CatalogSection({ group, index, onOpen, label, lang }: { group: CatalogG
   </section>;
 }
 
-function ProductCard({ sourceItem, onOpen, label, lang }: { sourceItem: GalleryItem; onOpen: (item: GalleryItem) => void; label: string; lang: Lang }) {
+function ProductCard({ sourceItem, onOpen, label, lang, hideTag = false }: { sourceItem: GalleryItem; onOpen: (item: GalleryItem) => void; label: string; lang: Lang; hideTag?: boolean }) {
   const item = localizeItem(sourceItem, lang);
   return <article className="product-card">
     <button className="product-card__image" onClick={() => onOpen(item)} aria-label={`${label}: ${item.title}`}><Picture item={item} /><span aria-hidden="true">↗</span></button>
-    <div className="product-card__body">{item.tag && <span>{item.tag}</span>}<h3>{item.title}</h3>{item.description && <p className={item.id === "rental-crimson-garden" ? "product-card__note product-card__note--italic" : "product-card__note"}>{item.description}</p>}</div>
+    <div className="product-card__body">{!hideTag && item.tag && <span>{item.tag}</span>}<h3>{item.title}</h3>{item.description && <p className={item.id === "rental-crimson-garden" ? "product-card__note product-card__note--italic" : "product-card__note"}>{item.description}</p>}</div>
   </article>;
 }
 
