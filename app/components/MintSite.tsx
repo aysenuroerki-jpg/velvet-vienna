@@ -90,11 +90,11 @@ function localizeItem(item: GalleryItem, lang: Lang): GalleryItem {
 }
 
 const occasionLabels: Record<Lang, string[]> = {
-  de: ["Hochzeit", "Verlobung", "Standesamtliche Trauung", "Hennaabend", "Private Feste"],
-  tr: ["Düğün", "Nişan", "Nikâh", "Kına Gecesi", "Özel Davetler"],
-  en: ["Wedding", "Engagement", "Civil Ceremony", "Henna Night", "Private Events"],
-  ar: ["زفاف", "خطوبة", "عقد قران", "ليلة الحناء", "مناسبات خاصة"],
-  ru: ["Свадьба", "Помолвка", "Регистрация", "Вечер хны", "Частные праздники"],
+  de: ["Hochzeit", "Verlobung", "Standesamtliche Trauung", "Hennaabend", "Heiratsantrag", "Private Feste"],
+  tr: ["Düğün", "Nişan", "Nikâh", "Kına Gecesi", "Evlilik Teklifi", "Özel Davetler"],
+  en: ["Wedding", "Engagement", "Civil Ceremony", "Henna Night", "Marriage Proposal", "Private Events"],
+  ar: ["زفاف", "خطوبة", "عقد قران", "ليلة الحناء", "طلب زواج", "مناسبات خاصة"],
+  ru: ["Свадьба", "Помолвка", "Регистрация", "Вечер хны", "Предложение руки и сердца", "Частные праздники"],
 };
 
 const copy = {
