@@ -88,7 +88,7 @@ export const ceremonyDetails = createItems("ceremony", [
   { file: "candle-tray", title: "Circle of Light", tag: "", description: "", alt: "Rundes rotes Kerzentablett für einen Hennaabend" },
   { file: "red-fan", title: "Scarlet Feather", tag: "Gelin Yelpazesi", description: "İsteğe göre kişiselleştirme yapılır", alt: "Roter Federfächer" },
   { file: "calla-bouquet", title: "Calla Pearl", tag: "", description: "", alt: "Weißer Calla-Brautstrauß mit Perlengriff" },
-  { file: "custom-tef", title: "Burgundy Tef", tag: "Kiralama", description: "Kına gelinine özel tef · İsteğe göre kişiselleştirme yapılır", alt: "Bordeauxfarbenes personalisiertes Tef" },
+  { file: "custom-tef", title: "Burgundy Tef", tag: "", description: "Kına gelinine özel tef · İsteğe göre kişiselleştirme yapılır", alt: "Bordeauxfarbenes personalisiertes Tef" },
   { file: "henna-coffee-set", title: "Henna Coffee", tag: "", description: "", alt: "Bordeaux-goldenes Henna-Kaffeeset" },
   { file: "white-tef", title: "White Satin Tef", tag: "", description: "", alt: "Weißes Tef mit Satinband" },
   { file: "lace-tef", title: "Ivory Lace Tef", tag: "", description: "", alt: "Cremefarbenes Tef mit Spitze" },
