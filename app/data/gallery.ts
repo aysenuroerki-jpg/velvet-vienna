@@ -149,14 +149,6 @@ const hairClipGift: GalleryItem = {
   description: "",
 };
 
-const bridalFanGift: GalleryItem = {
-  ...getCeremony("Scarlet Feather"),
-  id: "gift-bridal-fan",
-  title: "Bridal Whisper",
-  tag: "",
-  description: "İsteğe göre kişiselleştirme yapılır",
-};
-
 export const giftCatalogItems: GalleryItem[] = [
   getGift("Pearl Wishes"),
   getGift("Burgundy Keepsake"),
@@ -176,7 +168,6 @@ export const giftCatalogItems: GalleryItem[] = [
   getCeremony("A Name in the Breeze"),
   canvasBagGift,
   hairClipGift,
-  bridalFanGift,
 ];
 
 const crimsonGardenRental: GalleryItem = {
