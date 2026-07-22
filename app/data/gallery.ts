@@ -136,7 +136,7 @@ const mandalTokaGift: GalleryItem = {
 const canvasBagGift: GalleryItem = {
   ...getGift("Initials in Ivory"),
   id: "gift-canvas-bag",
-  title: "Bez Çanta",
+  title: "Linen Signature",
   tag: "",
   description: "İsimlendirme ekstra ücretle yapılır",
 };
@@ -144,7 +144,7 @@ const canvasBagGift: GalleryItem = {
 const hairClipGift: GalleryItem = {
   ...getCeremony("Crimson Crowns"),
   id: "gift-hair-clip",
-  title: "Toka",
+  title: "Crimson Grace",
   tag: "",
   description: "",
 };
@@ -152,7 +152,7 @@ const hairClipGift: GalleryItem = {
 const bridalFanGift: GalleryItem = {
   ...getCeremony("Scarlet Feather"),
   id: "gift-bridal-fan",
-  title: "Gelin Yelpazesi",
+  title: "Bridal Whisper",
   tag: "",
   description: "İsteğe göre kişiselleştirme yapılır",
 };
