@@ -47,8 +47,8 @@ export const backdropProjects = createItems("backdrops", [
   { file: "heart-curtain", title: "Heart Curtain", tag: "Feier", description: "Stoff · Herzen · Licht", alt: "Weiße Vorhangkulisse mit roten Herzen" },
   { file: "blue-drapery", title: "Blue Drapery", tag: "Verlobung", description: "Blau · Rosa · Blumen", alt: "Blaue drapierte Verlobungskulisse mit Blumen" },
   { file: "burgundy-circle", title: "Burgundy Circle", tag: "Verlobung", description: "Rundbogen · Stoff · Blumen", alt: "Bordeauxfarbene Rundbogen-Kulisse" },
-  { file: "kina-welcome", title: "Kına Welcome", tag: "Masa Karşılama", description: "Tücher · Spiegel · Empfang", alt: "Roter Henna-Empfangstisch im Freien" },
-  { file: "burgundy-welcome", title: "Burgundy Welcome", tag: "Masa Karşılama", description: "Blumen · Schleifen · Kerzen", alt: "Bordeauxfarbene Empfangskulisse mit Kerzen" },
+  { file: "kina-welcome", title: "Kına Welcome", tag: "Empfang", description: "Tücher · Spiegel · Empfang", alt: "Roter Henna-Empfangstisch im Freien" },
+  { file: "burgundy-welcome", title: "Burgundy Welcome", tag: "Empfang", description: "Blumen · Schleifen · Kerzen", alt: "Bordeauxfarbene Empfangskulisse mit Kerzen" },
 ]);
 
 export const decorBackdropProjects = backdropProjects.slice(0, 14);
