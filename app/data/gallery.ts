@@ -138,7 +138,7 @@ const canvasBagGift: GalleryItem = {
   id: "gift-canvas-bag",
   title: "Linen Signature",
   tag: "",
-  description: "İsimlendirme ekstra ücretle yapılır",
+  description: "İsteğe göre kişiselleştirme yapılır",
 };
 
 const hairClipGift: GalleryItem = {
