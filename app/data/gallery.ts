@@ -70,9 +70,9 @@ export const receptionProjects = createItems("reception", [
 ]);
 
 export const giftDetails = createItems("gifts", [
-  { file: "organza-bouquets", title: "Blush Bouquets", tag: "Stoffbeutel Monogram", description: "Stoffbeutel Monogram", alt: "Zarte Stoffbeutel mit Monogramm und Trockenblumen" },
-  { file: "initials-bags", title: "Initials in Ivory", tag: "Gastgeschenk", description: "Personalisierung", alt: "Elfenbeinfarbene Stoffbeutel mit Initialen" },
-  { file: "floral-perfume", title: "A Little Scent", tag: "Gastgeschenk", description: "Dudak Kalemi", alt: "Personalisierter Dudak Kalemi mit kleiner Blume" },
+  { file: "organza-bouquets", title: "Blush Bouquets", tag: "", description: "", alt: "Zarte Stoffbeutel mit Monogramm und Trockenblumen" },
+  { file: "initials-bags", title: "Initials in Ivory", tag: "", description: "Kişiselleştirme yapılır", alt: "Elfenbeinfarbene Stoffbeutel mit Initialen" },
+  { file: "floral-perfume", title: "A Little Scent", tag: "Gastgeschenk", description: "", alt: "Personalisierter Dudak Kalemi mit kleiner Blume" },
   { file: "pearl-bracelets", title: "Pearl Wishes", tag: "Gastgeschenk", description: "", alt: "Personalisierte Perlenarmbänder als Gastgeschenke" },
   { file: "burgundy-sets", title: "Burgundy Keepsake", tag: "Gastgeschenk", description: "", alt: "Bordeauxfarbene persönliche Gastgeschenk-Sets" },
   { file: "organza-flower", title: "Ivory Blossom", tag: "Gastgeschenk", description: "", alt: "Organza-Beutel mit elfenbeinfarbener Blume" },
@@ -127,10 +127,9 @@ const guestbookForever = getGift("Guestbook Forever") ?? {
 
 export const giftCatalogGroups: CatalogGroup[] = [
   { id: "stoffbeutel", title: "Stoffbeutel & Monogramm", items: [getGift("Blush Bouquets"), getGift("Initials in Ivory")] },
-  { id: "beauty", title: "Beauty Details", items: [getGift("A Little Scent")] },
-  { id: "clips", title: "Mandal Toka Örnekleri", items: [getGift("Ivory Blossom"), getGift("Sweet Comb"), getGift("Cream Petals")] },
-  { id: "hair-ties", title: "Saç Lastiği Örnekleri", items: [getGift("Burgundy Keepsake"), getGift("Blush Pouches"), getGift("Henna Welcome")] },
-  { id: "small-gifts", title: "Küçük Hediyeler", items: [getGift("Pearl Wishes"), getGift("Mint in a Jar")] },
+  { id: "clips", title: "Hediyelik Kına Örnekleri", items: [getGift("Sweet Comb"), getGift("Cream Petals"), getGift("Henna Welcome")] },
+  { id: "hair-ties", title: "Saç Lastiği Örnekleri", items: [getGift("Burgundy Keepsake"), getGift("Blush Pouches"), getGift("Pearl Wishes")] },
+  { id: "small-gifts", title: "Küçük Hediyeler", items: [getGift("Ivory Blossom"), getGift("A Little Scent"), getGift("Mint in a Jar")] },
   { id: "halay-gift", title: "Kişiye Özel Halay Mendili", items: [getCeremony("Names in Motion")] },
   { id: "light-gifts", title: "Işıklı Hediyelikler", items: [getCeremony("Emerald Glow"), getCeremony("Rustic Glow")] },
   { id: "fans", title: "Yelpaze Çeşitleri Örnekleri", items: [getCeremony("Scarlet Breeze"), getCeremony("Ivory Breeze"), getCeremony("A Name in the Breeze")] },
