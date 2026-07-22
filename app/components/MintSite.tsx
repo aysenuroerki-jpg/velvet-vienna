@@ -8,7 +8,7 @@ import {
   ceremonyDetails,
   decorBackdropProjects,
   giftDetails,
-  giftCatalogGroups,
+  giftCatalogItems,
   galleryPath,
   receptionProjects,
   rentalCatalogGroups,
@@ -63,14 +63,22 @@ const tagTranslations: Record<Lang, Record<string, string>> = {
 
 const itemDescriptionTranslations: Record<Lang, Record<string, string>> = {
   de: {
-    "Scarlet Feather": "Auf Wunsch personalisierbar", "Burgundy Tef": "Spezielles Tef für die Henna-Braut · Auf Wunsch personalisierbar", "Midnight Masks": "Auf Wunsch personalisierbar", "Instant Memories": "Inklusive 20 Aufnahmen", "Davul Kiralama": "Auf Wunsch personalisierbar", "rental-crimson-garden": "Roter Teppich und Henna-Thron können separat gemietet werden.", "Initials in Ivory": "Personalisierung möglich",
+    "Scarlet Feather": "Auf Wunsch personalisierbar", "Burgundy Tef": "Spezielles Tef für die Henna-Braut · Auf Wunsch personalisierbar", "Midnight Masks": "Auf Wunsch personalisierbar", "Instant Memories": "Inklusive 20 Aufnahmen", "Davul Kiralama": "Auf Wunsch personalisierbar", "rental-crimson-garden": "Roter Teppich und Henna-Thron können separat gemietet werden.", "Initials in Ivory": "Personalisierung möglich", "Bez Çanta": "Namenspersonalisierung gegen Aufpreis", "Gelin Yelpazesi": "Auf Wunsch personalisierbar",
   },
   tr: {
-    "Sarı & Orange Garden": "Çiçekler · Kumaş · Açık alan", "White Geometry": "Tekstil · Geometri · Beyaz", "Rosé & Gold": "Pudra pembe · Işık · Altın", "Luminous White": "Işık kemerleri · Çiçek tasarımı", "Butterfly Geometry": "Tekstil · Kelebek detayları", "White Circle": "Masa · Yuvarlak kemer · Çiçekler", "Pearl Light": "Sedef · Işık · Çiçek tasarımı", "Crimson Garden": "Taht · Halı · Fenerler", "rental-crimson-garden": "Kırmızı Halı ve Kına Tahtı ayrı ayrı kiralanabilir.", "Sage & Gold Garden": "Adaçayı yeşili · Altın · Çiçekler", "Davul & Drapes": "Taht · Davul · Kumaş", "Pampas Heart": "Kalp kemeri · Pampas · Kırmızı", "Heart Curtain": "Kumaş · Kalpler · Işık", "Blue Drapery": "Mavi · Pembe · Çiçekler", "Burgundy Circle": "Yuvarlak kemer · Kumaş · Çiçekler", "Kına Welcome": "Tüller · Ayna · Karşılama", "Burgundy Welcome": "Çiçekler · Kurdeleler · Mumlar", "Memory Table": "Kartlar · Mumlar · Çiçekler", "Burgundy Sweets": "Tatlılar · Tekstil · Mumlar", "Sweet Gathering": "Büfe · Çiçekler · Sunum", "Rustic Table": "Ahşap · Çiçekler · Mumlar", "At Your Place": "Peçete · İsim kartı", "Lace Welcome": "Dantel · Şövale · Çiçekler", "Butterfly Welcome": "Ayna · Kelebekler · Çiçekler", "Golden Reflection": "Kemer ayna · Altın · Çiçek tasarımı", "Castle Promise": "Göl · Şato · Evlilik teklifi", "Initials in Ivory": "Kişiselleştirme yapılır", "Scarlet Feather": "İsteğe göre kişiselleştirme yapılır", "Burgundy Tef": "Kına gelinine özel tef · İsteğe göre kişiselleştirme yapılır", "Midnight Masks": "İsteğe göre kişiselleştirme yapılır", "Instant Memories": "20 poz ile birlikte", "Davul Kiralama": "İsteğe göre kişiselleştirme yapılır",
+    "Sarı & Orange Garden": "Çiçekler · Kumaş · Açık alan", "White Geometry": "Tekstil · Geometri · Beyaz", "Rosé & Gold": "Pudra pembe · Işık · Altın", "Luminous White": "Işık kemerleri · Çiçek tasarımı", "Butterfly Geometry": "Tekstil · Kelebek detayları", "White Circle": "Masa · Yuvarlak kemer · Çiçekler", "Pearl Light": "Sedef · Işık · Çiçek tasarımı", "Crimson Garden": "Taht · Halı · Fenerler", "rental-crimson-garden": "Kırmızı Halı ve Kına Tahtı ayrı ayrı kiralanabilir.", "Sage & Gold Garden": "Adaçayı yeşili · Altın · Çiçekler", "Davul & Drapes": "Taht · Davul · Kumaş", "Pampas Heart": "Kalp kemeri · Pampas · Kırmızı", "Heart Curtain": "Kumaş · Kalpler · Işık", "Blue Drapery": "Mavi · Pembe · Çiçekler", "Burgundy Circle": "Yuvarlak kemer · Kumaş · Çiçekler", "Kına Welcome": "Tüller · Ayna · Karşılama", "Burgundy Welcome": "Çiçekler · Kurdeleler · Mumlar", "Memory Table": "Kartlar · Mumlar · Çiçekler", "Burgundy Sweets": "Tatlılar · Tekstil · Mumlar", "Sweet Gathering": "Büfe · Çiçekler · Sunum", "Rustic Table": "Ahşap · Çiçekler · Mumlar", "At Your Place": "Peçete · İsim kartı", "Lace Welcome": "Dantel · Şövale · Çiçekler", "Butterfly Welcome": "Ayna · Kelebekler · Çiçekler", "Golden Reflection": "Kemer ayna · Altın · Çiçek tasarımı", "Castle Promise": "Göl · Şato · Evlilik teklifi", "Initials in Ivory": "Kişiselleştirme yapılır", "Scarlet Feather": "İsteğe göre kişiselleştirme yapılır", "Burgundy Tef": "Kına gelinine özel tef · İsteğe göre kişiselleştirme yapılır", "Midnight Masks": "İsteğe göre kişiselleştirme yapılır", "Instant Memories": "20 poz ile birlikte", "Davul Kiralama": "İsteğe göre kişiselleştirme yapılır", "Bez Çanta": "İsimlendirme ekstra ücretle yapılır", "Gelin Yelpazesi": "İsteğe göre kişiselleştirme yapılır",
   },
-  en: { "Scarlet Feather": "Personalisation available on request", "Burgundy Tef": "Special tef for the henna bride · Personalisation available on request", "Midnight Masks": "Personalisation available on request", "Instant Memories": "Includes 20 shots", "Davul Kiralama": "Personalisation available on request", "rental-crimson-garden": "The red carpet and henna throne can be hired separately.", "Initials in Ivory": "Personalisation available" },
-  ar: { "Scarlet Feather": "يمكن تخصيصه حسب الطلب", "Burgundy Tef": "دف خاص لعروس الحناء · يمكن تخصيصه حسب الطلب", "Midnight Masks": "يمكن تخصيصه حسب الطلب", "Instant Memories": "يشمل 20 لقطة", "Davul Kiralama": "يمكن تخصيصه حسب الطلب", "rental-crimson-garden": "يمكن استئجار السجادة الحمراء وعرش الحناء بشكل منفصل.", "Initials in Ivory": "التخصيص متاح" },
-  ru: { "Scarlet Feather": "Персонализация по запросу", "Burgundy Tef": "Особый теф для невесты на вечере хны · Персонализация по запросу", "Midnight Masks": "Персонализация по запросу", "Instant Memories": "Включено 20 снимков", "Davul Kiralama": "Персонализация по запросу", "rental-crimson-garden": "Красную дорожку и трон для хны можно арендовать отдельно.", "Initials in Ivory": "Возможна персонализация" },
+  en: { "Scarlet Feather": "Personalisation available on request", "Burgundy Tef": "Special tef for the henna bride · Personalisation available on request", "Midnight Masks": "Personalisation available on request", "Instant Memories": "Includes 20 shots", "Davul Kiralama": "Personalisation available on request", "rental-crimson-garden": "The red carpet and henna throne can be hired separately.", "Initials in Ivory": "Personalisation available", "Bez Çanta": "Name personalisation is available for an additional fee", "Gelin Yelpazesi": "Personalisation available on request" },
+  ar: { "Scarlet Feather": "يمكن تخصيصه حسب الطلب", "Burgundy Tef": "دف خاص لعروس الحناء · يمكن تخصيصه حسب الطلب", "Midnight Masks": "يمكن تخصيصه حسب الطلب", "Instant Memories": "يشمل 20 لقطة", "Davul Kiralama": "يمكن تخصيصه حسب الطلب", "rental-crimson-garden": "يمكن استئجار السجادة الحمراء وعرش الحناء بشكل منفصل.", "Initials in Ivory": "التخصيص متاح", "Bez Çanta": "تخصيص الاسم متاح مقابل رسوم إضافية", "Gelin Yelpazesi": "يمكن تخصيصه حسب الطلب" },
+  ru: { "Scarlet Feather": "Персонализация по запросу", "Burgundy Tef": "Особый теф для невесты на вечере хны · Персонализация по запросу", "Midnight Masks": "Персонализация по запросу", "Instant Memories": "Включено 20 снимков", "Davul Kiralama": "Персонализация по запросу", "rental-crimson-garden": "Красную дорожку и трон для хны можно арендовать отдельно.", "Initials in Ivory": "Возможна персонализация", "Bez Çanta": "Именная персонализация доступна за дополнительную плату", "Gelin Yelpazesi": "Персонализация по запросу" },
+};
+
+const itemTitleTranslations: Record<Lang, Record<string, string>> = {
+  de: { "Mandal Toka Örnekleri": "Haarklammer-Beispiele", "Bez Çanta": "Stofftasche", Toka: "Haarspange", "Gelin Yelpazesi": "Brautfächer" },
+  tr: { "Mandal Toka Örnekleri": "Mandal Toka Örnekleri", "Bez Çanta": "Bez Çanta", Toka: "Toka", "Gelin Yelpazesi": "Gelin Yelpazesi" },
+  en: { "Mandal Toka Örnekleri": "Hair Clip Examples", "Bez Çanta": "Fabric Bag", Toka: "Hair Clip", "Gelin Yelpazesi": "Bridal Fan" },
+  ar: { "Mandal Toka Örnekleri": "أمثلة مشابك الشعر", "Bez Çanta": "حقيبة قماش", Toka: "مشبك شعر", "Gelin Yelpazesi": "مروحة العروس" },
+  ru: { "Mandal Toka Örnekleri": "Примеры заколок", "Bez Çanta": "Тканевая сумка", Toka: "Заколка", "Gelin Yelpazesi": "Веер невесты" },
 };
 
 const catalogGroupTitles: Record<Lang, Record<string, string>> = {
@@ -84,6 +92,7 @@ const catalogGroupTitles: Record<Lang, Record<string, string>> = {
 function localizeItem(item: GalleryItem, lang: Lang): GalleryItem {
   return {
     ...item,
+    title: itemTitleTranslations[lang][item.title] ?? item.title,
     tag: tagTranslations[lang][item.tag] ?? item.tag,
     description: itemDescriptionTranslations[lang][item.id] ?? itemDescriptionTranslations[lang][item.title] ?? item.description,
   };
@@ -308,8 +317,9 @@ function PortfolioPage({ t, filter, setFilter, items, open, lang }: { t: typeof 
 
 function DetailsCatalog({ t, filter, setFilter, open, labels, lang }: { t: typeof copy.de; filter: string; setFilter: (value: string) => void; open: (item: GalleryItem) => void; labels: (typeof categoryLabels)[Lang]; lang: Lang }) {
   const active = filter === "ceremony" ? "ceremony" : "gifts";
-  const groups = active === "gifts" ? giftCatalogGroups : rentalCatalogGroups;
-  const count = groups.reduce((total, group) => total + group.items.length, 0);
+  const count = active === "gifts"
+    ? giftCatalogItems.length
+    : rentalCatalogGroups.reduce((total, group) => total + group.items.length, 0);
 
   return <>
     <section className="page-hero"><div className="page-hero__copy"><p className="kicker">{t.detailsKicker}</p><h1>{t.detailsTitle}</h1><p>{t.detailsText}</p><span className="page-count">{count} · Mint Event</span></div><div className="page-hero__image"><Picture item={ceremonyDetails[3]} priority /></div></section>
@@ -318,7 +328,9 @@ function DetailsCatalog({ t, filter, setFilter, open, labels, lang }: { t: typeo
         <button role="tab" aria-selected={active === "gifts"} className={active === "gifts" ? "active" : ""} onClick={() => setFilter("gifts")}>{labels.gifts}</button>
         <button role="tab" aria-selected={active === "ceremony"} className={active === "ceremony" ? "active" : ""} onClick={() => setFilter("ceremony")}>{labels.rental}</button>
       </div>
-      <div className="catalog-groups">{groups.map((group, index) => <CatalogSection key={group.id} group={group} index={index} onOpen={open} label={t.imageOpen} lang={lang} />)}</div>
+      {active === "gifts"
+        ? <div className="catalog-flat-grid">{giftCatalogItems.map((item) => <ProductCard key={item.id} sourceItem={item} onOpen={open} label={t.imageOpen} lang={lang} />)}</div>
+        : <div className="catalog-groups">{rentalCatalogGroups.map((group, index) => <CatalogSection key={group.id} group={group} index={index} onOpen={open} label={t.imageOpen} lang={lang} />)}</div>}
     </section>
     <Cta t={t} />
   </>;
@@ -328,11 +340,16 @@ function CatalogSection({ group, index, onOpen, label, lang }: { group: CatalogG
   const groupTitle = catalogGroupTitles[lang][group.id] ?? group.title;
   return <section className="catalog-group" aria-labelledby={`catalog-${group.id}`}>
     <header className="catalog-group__heading"><span>{String(index + 1).padStart(2, "0")}</span><h2 id={`catalog-${group.id}`}>{groupTitle}</h2><i>{group.items.length}</i></header>
-    <div className="catalog-group__grid">{group.items.map((sourceItem) => { const item = localizeItem(sourceItem, lang); return <article className="product-card" key={`${group.id}-${item.id}`}>
-      <button className="product-card__image" onClick={() => onOpen(item)} aria-label={`${label}: ${item.title}`}><Picture item={item} /><span aria-hidden="true">↗</span></button>
-      <div className="product-card__body">{item.tag && <span>{item.tag}</span>}<h3>{item.title}</h3>{item.description && <p className={item.id === "rental-crimson-garden" ? "product-card__note product-card__note--italic" : "product-card__note"}>{item.description}</p>}</div>
-    </article>; })}</div>
+    <div className="catalog-group__grid">{group.items.map((item) => <ProductCard key={`${group.id}-${item.id}`} sourceItem={item} onOpen={onOpen} label={label} lang={lang} />)}</div>
   </section>;
+}
+
+function ProductCard({ sourceItem, onOpen, label, lang }: { sourceItem: GalleryItem; onOpen: (item: GalleryItem) => void; label: string; lang: Lang }) {
+  const item = localizeItem(sourceItem, lang);
+  return <article className="product-card">
+    <button className="product-card__image" onClick={() => onOpen(item)} aria-label={`${label}: ${item.title}`}><Picture item={item} /><span aria-hidden="true">↗</span></button>
+    <div className="product-card__body">{item.tag && <span>{item.tag}</span>}<h3>{item.title}</h3>{item.description && <p className={item.id === "rental-crimson-garden" ? "product-card__note product-card__note--italic" : "product-card__note"}>{item.description}</p>}</div>
+  </article>;
 }
 
 function Studio({ t, lang }: { t: typeof copy.de; lang: Lang }) {

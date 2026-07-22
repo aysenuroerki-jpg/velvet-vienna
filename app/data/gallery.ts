@@ -125,14 +125,58 @@ const guestbookForever = getGift("Guestbook Forever") ?? {
   alt: "Gerahmtes Gästebuch mit Foto",
 };
 
-export const giftCatalogGroups: CatalogGroup[] = [
-  { id: "stoffbeutel", title: "Stoffbeutel & Monogramm", items: [getGift("Blush Bouquets"), getGift("Initials in Ivory")] },
-  { id: "clips", title: "Hediyelik Kına Örnekleri", items: [getGift("Sweet Comb"), getGift("Cream Petals"), getGift("Henna Welcome")] },
-  { id: "hair-ties", title: "Saç Lastiği Örnekleri", items: [getGift("Burgundy Keepsake"), getGift("Blush Pouches"), getGift("Pearl Wishes")] },
-  { id: "small-gifts", title: "Küçük Hediyeler", items: [getGift("Ivory Blossom"), getGift("A Little Scent"), getGift("Mint in a Jar")] },
-  { id: "halay-gift", title: "Kişiye Özel Halay Mendili", items: [getCeremony("Names in Motion")] },
-  { id: "light-gifts", title: "Işıklı Hediyelikler", items: [getCeremony("Emerald Glow"), getCeremony("Rustic Glow")] },
-  { id: "fans", title: "Yelpaze Çeşitleri Örnekleri", items: [getCeremony("Scarlet Breeze"), getCeremony("Ivory Breeze"), getCeremony("A Name in the Breeze")] },
+const mandalTokaGift: GalleryItem = {
+  ...getGift("Cream Petals"),
+  id: "gift-mandal-toka",
+  title: "Mandal Toka Örnekleri",
+  tag: "",
+  description: "",
+};
+
+const canvasBagGift: GalleryItem = {
+  ...getGift("Initials in Ivory"),
+  id: "gift-canvas-bag",
+  title: "Bez Çanta",
+  tag: "",
+  description: "İsimlendirme ekstra ücretle yapılır",
+};
+
+const hairClipGift: GalleryItem = {
+  ...getCeremony("Crimson Crowns"),
+  id: "gift-hair-clip",
+  title: "Toka",
+  tag: "",
+  description: "",
+};
+
+const bridalFanGift: GalleryItem = {
+  ...getCeremony("Scarlet Feather"),
+  id: "gift-bridal-fan",
+  title: "Gelin Yelpazesi",
+  tag: "",
+  description: "İsteğe göre kişiselleştirme yapılır",
+};
+
+export const giftCatalogItems: GalleryItem[] = [
+  getGift("Pearl Wishes"),
+  getGift("Burgundy Keepsake"),
+  getGift("Blush Pouches"),
+  getGift("Henna Welcome"),
+  getGift("Initials in Ivory"),
+  getGift("Blush Bouquets"),
+  getGift("Ivory Blossom"),
+  getGift("A Little Scent"),
+  getGift("Sweet Comb"),
+  mandalTokaGift,
+  getCeremony("Names in Motion"),
+  getCeremony("Emerald Glow"),
+  getCeremony("Rustic Glow"),
+  getCeremony("Scarlet Breeze"),
+  getCeremony("Ivory Breeze"),
+  getCeremony("A Name in the Breeze"),
+  canvasBagGift,
+  hairClipGift,
+  bridalFanGift,
 ];
 
 const crimsonGardenRental: GalleryItem = {
@@ -154,5 +198,5 @@ export const rentalCatalogGroups: CatalogGroup[] = [
 ];
 
 export const allProjects = [...decorBackdropProjects, ...tableProjects, ...welcomeProjects, ...receptionProjects];
-export const allDetails = [...giftCatalogGroups.flatMap((group) => group.items), ...rentalCatalogGroups.flatMap((group) => group.items)];
+export const allDetails = [...giftCatalogItems, ...rentalCatalogGroups.flatMap((group) => group.items)];
 export const allGallery = [...allProjects, ...allDetails];
