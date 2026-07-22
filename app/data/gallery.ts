@@ -133,22 +133,6 @@ const mandalTokaGift: GalleryItem = {
   description: "",
 };
 
-const canvasBagGift: GalleryItem = {
-  ...getGift("Initials in Ivory"),
-  id: "gift-canvas-bag",
-  title: "Linen Signature",
-  tag: "",
-  description: "İsteğe göre kişiselleştirme yapılır",
-};
-
-const hairClipGift: GalleryItem = {
-  ...getCeremony("Crimson Crowns"),
-  id: "gift-hair-clip",
-  title: "Crimson Grace",
-  tag: "",
-  description: "",
-};
-
 export const giftCatalogItems: GalleryItem[] = [
   getGift("Pearl Wishes"),
   getGift("Burgundy Keepsake"),
@@ -166,8 +150,6 @@ export const giftCatalogItems: GalleryItem[] = [
   getCeremony("Scarlet Breeze"),
   getCeremony("Ivory Breeze"),
   getCeremony("A Name in the Breeze"),
-  canvasBagGift,
-  hairClipGift,
 ];
 
 const crimsonGardenRental: GalleryItem = {
