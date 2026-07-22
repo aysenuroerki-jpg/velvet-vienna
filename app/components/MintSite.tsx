@@ -3,13 +3,18 @@
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import {
-  allDetails,
   allProjects,
   backdropProjects,
   ceremonyDetails,
+  decorBackdropProjects,
   giftDetails,
+  giftCatalogGroups,
   galleryPath,
+  receptionProjects,
+  rentalCatalogGroups,
   tableProjects,
+  welcomeProjects,
+  type CatalogGroup,
   type GalleryItem,
 } from "../data/gallery";
 
@@ -23,6 +28,16 @@ const languages: Array<{ id: Lang; flag: string; label: string }> = [
   { id: "ar", flag: "🇸🇦", label: "العربية" },
   { id: "ru", flag: "🇷🇺", label: "Русский" },
 ];
+
+const categoryLabels: Record<Lang, { welcome: string; reception: string; gifts: string; rental: string }> = {
+  de: { welcome: "Tischbegrüßung", reception: "Empfang", gifts: "Gastgeschenke", rental: "Miete" },
+  tr: { welcome: "Masa Karşılama", reception: "Karşılama", gifts: "Hediyelikler", rental: "Kiralama" },
+  en: { welcome: "Welcome Table", reception: "Reception", gifts: "Guest Favours", rental: "Hire" },
+  ar: { welcome: "طاولة الترحيب", reception: "الاستقبال", gifts: "هدايا الضيوف", rental: "الإيجار" },
+  ru: { welcome: "Стол приветствия", reception: "Приём", gifts: "Подарки гостям", rental: "Аренда" },
+};
+
+const inspirationText = "Sitemizde sunulan ürünler ve konsept fikirleri, karar verme sürecinizi kolaylaştırmak ve sizlere ilham olmak amacıyla özenle hazırlanmıştır. Hayalinizdeki farklı fikir ve özel istekleriniz için bizimle iletişime geçebilirsiniz; konseptinizi birlikte tasarlamaktan mutluluk duyarız.";
 
 const occasionLabels: Record<Lang, string[]> = {
   de: ["Hochzeit", "Verlobung", "Standesamtliche Trauung", "Hennaabend", "Private Feste"],
@@ -135,7 +150,10 @@ export function MintSite({ page }: { page: SitePage }) {
 
   useEffect(() => {
     const saved = window.localStorage.getItem("mint-lang") as Lang | null;
-    if (saved && languages.some((item) => item.id === saved)) setLang(saved);
+    if (saved && languages.some((item) => item.id === saved)) {
+      const frame = window.requestAnimationFrame(() => setLang(saved));
+      return () => window.cancelAnimationFrame(frame);
+    }
   }, []);
 
   useEffect(() => {
@@ -150,8 +168,13 @@ export function MintSite({ page }: { page: SitePage }) {
     return () => window.removeEventListener("keydown", close);
   }, []);
 
-  const filteredProjects = useMemo(() => filter === "backdrops" ? backdropProjects : filter === "tables" ? tableProjects : allProjects, [filter]);
-  const filteredDetails = useMemo(() => filter === "gifts" ? giftDetails : filter === "ceremony" ? ceremonyDetails : allDetails, [filter]);
+  const filteredProjects = useMemo(() => {
+    if (filter === "backdrops") return decorBackdropProjects;
+    if (filter === "tables") return tableProjects;
+    if (filter === "welcome") return welcomeProjects;
+    if (filter === "reception") return receptionProjects;
+    return allProjects;
+  }, [filter]);
 
   return (
     <div className="site-shell" dir={rtl ? "rtl" : "ltr"}>
@@ -174,8 +197,8 @@ export function MintSite({ page }: { page: SitePage }) {
 
       <main id="main">
         {page === "home" && <Home t={t} occasions={occasionLabels[lang]} open={setLightbox} />}
-        {page === "projects" && <PortfolioPage kind="projects" t={t} filter={filter} setFilter={setFilter} items={filteredProjects} open={setLightbox} />}
-        {page === "details" && <PortfolioPage kind="details" t={t} filter={filter} setFilter={setFilter} items={filteredDetails} open={setLightbox} />}
+        {page === "projects" && <PortfolioPage t={t} filter={filter} setFilter={setFilter} items={filteredProjects} open={setLightbox} labels={categoryLabels[lang]} />}
+        {page === "details" && <DetailsCatalog t={t} filter={filter} setFilter={setFilter} open={setLightbox} labels={categoryLabels[lang]} />}
         {page === "studio" && <Studio t={t} />}
         {page === "contact" && <Contact t={t} />}
       </main>
@@ -203,7 +226,7 @@ function SectionHeading({ kicker, title, text }: { kicker: string; title: string
 }
 
 function Home({ t, occasions, open }: { t: typeof copy.de; occasions: string[]; open: (item: GalleryItem) => void }) {
-  const featured = [backdropProjects[2], ceremonyDetails[20], giftDetails[13]];
+  const featured = [backdropProjects[2], ceremonyDetails[20], giftDetails[9]];
   return <>
     <section className="hero">
       <div className="hero__background"><video autoPlay muted loop playsInline poster="/videos/mint-events-film-poster.jpg" preload="metadata" aria-hidden="true"><source src="/videos/mint-events-film.mp4" type="video/mp4" /></video></div>
@@ -222,20 +245,48 @@ function Service({ number, title, text, symbol, featured = false }: { number: st
   return <article className={featured ? "service-card service-card--featured" : "service-card"}><span className="service-card__number">{number}</span><span className="service-card__symbol">{symbol}</span><h3>{title}</h3><p>{text}</p></article>;
 }
 
-function PortfolioPage({ kind, t, filter, setFilter, items, open }: { kind: "projects" | "details"; t: typeof copy.de; filter: string; setFilter: (value: string) => void; items: GalleryItem[]; open: (item: GalleryItem) => void }) {
-  const isProjects = kind === "projects";
-  const filters = isProjects ? [["all", t.filters.all], ["backdrops", t.filters.backdrops], ["tables", t.filters.tables]] : [["all", t.filters.all], ["gifts", t.filters.gifts], ["ceremony", t.filters.ceremony]];
-  const heroItem = isProjects ? backdropProjects[7] : ceremonyDetails[3];
+function PortfolioPage({ t, filter, setFilter, items, open, labels }: { t: typeof copy.de; filter: string; setFilter: (value: string) => void; items: GalleryItem[]; open: (item: GalleryItem) => void; labels: (typeof categoryLabels)[Lang] }) {
+  const filters = [["all", t.filters.all], ["backdrops", t.filters.backdrops], ["tables", t.filters.tables], ["welcome", labels.welcome], ["reception", labels.reception]];
+  const heroItem = backdropProjects[7];
   return <>
-    <section className="page-hero"><div className="page-hero__copy"><p className="kicker">{isProjects ? t.projectsKicker : t.detailsKicker}</p><h1>{isProjects ? t.projectsTitle : t.detailsTitle}</h1><p>{isProjects ? t.projectsText : t.detailsText}</p><span className="page-count">{isProjects ? "21" : "44"} · Mint Event</span></div><div className="page-hero__image"><Picture item={heroItem} priority /></div></section>
+    <section className="page-hero"><div className="page-hero__copy"><p className="kicker">{t.projectsKicker}</p><h1>{t.projectsTitle}</h1><p>{t.projectsText}</p><span className="page-count">{allProjects.length} · Mint Event</span></div><div className="page-hero__image"><Picture item={heroItem} priority /></div></section>
     <section className="portfolio-section"><div className="filter-bar" role="group" aria-label="Gallery filters">{filters.map(([value, label]) => <button key={value} className={filter === value ? "active" : ""} onClick={() => setFilter(value)}>{label}</button>)}</div><Gallery items={items} onOpen={open} label={t.imageOpen} /></section>
     <Cta t={t} />
   </>;
 }
 
+function DetailsCatalog({ t, filter, setFilter, open, labels }: { t: typeof copy.de; filter: string; setFilter: (value: string) => void; open: (item: GalleryItem) => void; labels: (typeof categoryLabels)[Lang] }) {
+  const active = filter === "ceremony" ? "ceremony" : "gifts";
+  const groups = active === "gifts" ? giftCatalogGroups : rentalCatalogGroups;
+  const count = groups.reduce((total, group) => total + group.items.length, 0);
+
+  return <>
+    <section className="page-hero"><div className="page-hero__copy"><p className="kicker">{t.detailsKicker}</p><h1>{t.detailsTitle}</h1><p>{t.detailsText}</p><span className="page-count">{count} · Mint Event</span></div><div className="page-hero__image"><Picture item={ceremonyDetails[3]} priority /></div></section>
+    <section className="catalog-section">
+      <aside className="catalog-note"><span aria-hidden="true">✦</span><p><em>{inspirationText}</em></p></aside>
+      <div className="catalog-tabs" role="tablist" aria-label="Detaylar kategorileri">
+        <button role="tab" aria-selected={active === "gifts"} className={active === "gifts" ? "active" : ""} onClick={() => setFilter("gifts")}>{labels.gifts}</button>
+        <button role="tab" aria-selected={active === "ceremony"} className={active === "ceremony" ? "active" : ""} onClick={() => setFilter("ceremony")}>{labels.rental}</button>
+      </div>
+      <div className="catalog-groups">{groups.map((group, index) => <CatalogSection key={group.id} group={group} index={index} onOpen={open} label={t.imageOpen} />)}</div>
+    </section>
+    <Cta t={t} />
+  </>;
+}
+
+function CatalogSection({ group, index, onOpen, label }: { group: CatalogGroup; index: number; onOpen: (item: GalleryItem) => void; label: string }) {
+  return <section className="catalog-group" aria-labelledby={`catalog-${group.id}`}>
+    <header className="catalog-group__heading"><span>{String(index + 1).padStart(2, "0")}</span><h2 id={`catalog-${group.id}`}>{group.title}</h2><i>{group.items.length}</i></header>
+    <div className="catalog-group__grid">{group.items.map((item) => <article className="product-card" key={`${group.id}-${item.id}`}>
+      <button className="product-card__image" onClick={() => onOpen(item)} aria-label={`${label}: ${item.title}`}><Picture item={item} /><span aria-hidden="true">↗</span></button>
+      <div className="product-card__body">{item.tag && <span>{item.tag}</span>}<h3>{item.title}</h3>{item.description && <p className={item.id === "rental-crimson-garden" ? "product-card__note product-card__note--italic" : "product-card__note"}>{item.description}</p>}</div>
+    </article>)}</div>
+  </section>;
+}
+
 function Studio({ t }: { t: typeof copy.de }) {
   return <>
-    <section className="studio-hero"><div><p className="kicker">{t.studioKicker}</p><h1>{t.studioTitle}</h1><p>{t.studioText}</p></div><div className="studio-hero__images"><div><Picture item={ceremonyDetails[20]} /></div><div><Picture item={giftDetails[15]} /></div></div></section>
+    <section className="studio-hero"><div><p className="kicker">{t.studioKicker}</p><h1>{t.studioTitle}</h1><p>{t.studioText}</p></div><div className="studio-hero__images"><div><Picture item={ceremonyDetails[20]} /></div><div><Picture item={giftDetails[10]} /></div></div></section>
     <section className="values-section"><SectionHeading kicker="01 · 02 · 03" title={t.signatureTitle} /><div className="value-list">{t.values.map((value, index) => <article key={value}><span>0{index + 1}</span><h3>{value}</h3><p>{t.valueText[index]}</p></article>)}</div></section>
     <section className="studio-quote"><p>“</p><h2>{t.studioText}</h2><span>Mint Event · Vienna</span></section>
     <Cta t={t} />
