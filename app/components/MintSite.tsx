@@ -45,6 +45,14 @@ const inspirationTexts: Record<Lang, string> = {
   ru: "Продукты и идеи оформления на нашем сайте тщательно подобраны, чтобы облегчить ваш выбор и подарить вдохновение. Свяжитесь с нами, если у вас есть особые идеи или пожелания; мы с радостью разработаем вашу концепцию вместе.",
 };
 
+const cakePartnerTexts: Record<Lang, string> = {
+  de: "Individuell abgestimmte Torten bieten wir über sorgfältig ausgewählte Partner an.",
+  tr: "Konseptinize özel pasta hizmeti, özenle seçtiğimiz iş ortaklarımız aracılığıyla sunulur.",
+  en: "Bespoke cakes are offered through our carefully selected partners.",
+  ar: "نقدّم خدمة الكيك المصمم خصيصاً لمناسبتكم بالتعاون مع شركائنا المختارين بعناية.",
+  ru: "Торты по индивидуальной концепции мы предлагаем через тщательно выбранных партнёров.",
+};
+
 const localeExtras: Record<Lang, { skip: string; scroll: string; feeling: [string, string]; city: string; address: string; occasions: string[] }> = {
   de: { skip: "Zum Inhalt", scroll: "Scrollen", feeling: ["Wien", "mit Gefühl"], city: "Wien", address: "Wien, Österreich", occasions: ["Hochzeit", "Verlobung", "Hennaabend", "Dekoration"] },
   tr: { skip: "İçeriğe geç", scroll: "Kaydır", feeling: ["Viyana", "duyguyla"], city: "Viyana", address: "Viyana, Avusturya", occasions: ["Düğün", "Nişan", "Kına Gecesi", "Dekorasyon"] },
@@ -296,7 +304,7 @@ function Home({ t, occasions, open, lang }: { t: typeof copy.de; occasions: stri
     <section className="promise-strip">{occasions.map((occasion, index) => <span key={occasion}>{occasion}{index < occasions.length - 1 && <i aria-hidden="true">✦</i>}</span>)}</section>
     <section className="intro-section"><SectionHeading kicker={t.signature} title={t.signatureTitle} text={t.signatureText} /><div className="intro-collage"><div><Picture item={backdropProjects[8]} /></div><div><Picture item={giftDetails[0]} /></div><p>{localeExtras[lang].feeling[0]}<br />{localeExtras[lang].feeling[1]}</p></div></section>
     <section className="featured-section"><div className="featured-top"><SectionHeading kicker={t.selected} title={t.selectedTitle} /><Link className="text-link" href="/projects">{t.viewAll} <span>→</span></Link></div><div className="featured-grid">{featured.map((sourceItem, index) => { const item = localizeItem(sourceItem, lang); return <article key={item.id} className={`feature-card feature-card--${index + 1}`}><button onClick={() => open(item)} aria-label={`${t.imageOpen}: ${item.title}`}><Picture item={item} /><span>{String(index + 1).padStart(2, "0")}</span></button>{item.tag && <p>{item.tag}</p>}<h3>{item.title}</h3></article>; })}</div></section>
-    <section className="services-section"><SectionHeading kicker={t.services} title={t.servicesTitle} /><div className="service-grid"><Service number="01" title={t.cake} text={t.cakeText} symbol="◇" featured /><Service number="02" title={t.photo} text={t.photoText} symbol="◎" featured /><Service number="03" title={t.invite} text={t.inviteText} symbol="✦" featured /></div></section>
+    <section className="services-section"><SectionHeading kicker={t.services} title={t.servicesTitle} /><div className="service-grid"><Service number="01" title={t.cake} text={cakePartnerTexts[lang]} symbol="◇" featured /><Service number="02" title={t.photo} text={t.photoText} symbol="◎" featured /><Service number="03" title={t.invite} text={t.inviteText} symbol="✦" featured /></div></section>
     <Cta t={t} />
   </>;
 }
