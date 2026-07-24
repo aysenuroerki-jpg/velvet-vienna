@@ -104,7 +104,7 @@ export const ceremonyDetails = createItems("ceremony", [
   { file: "personalized-wood-fans", title: "A Name in the Breeze", tag: "Gastgeschenk", description: "", alt: "Personalisierte Holzfächer" },
   { file: "floral-ring-boxes", title: "Blooming Rings", tag: "", description: "", alt: "Ringboxen in einer floralen Inszenierung" },
   { file: "floral-ring-tray", title: "Garden Promise", tag: "", description: "", alt: "Florales Ringtablett für eine Verlobungszeremonie" },
-  { file: "silver-ring-mirror", title: "Silver Promise", tag: "", description: "", alt: "Verspiegeltes Ringtablett mit silbernen Details" },
+  { file: "silver-ring-mirror-clean", title: "Silver Promise", tag: "", description: "", alt: "Verspiegeltes Ringtablett mit silbernen Details" },
   { file: "gold-ring-boxes", title: "Golden Vow", tag: "", description: "", alt: "Goldene Glas-Ringboxen auf einem personalisierten Kissen" },
   { file: "gold-ring-tray", title: "Golden Initials", tag: "", description: "", alt: "Personalisiertes weiß-goldenes Ringtablett" },
   { file: "instant-memories", title: "Instant Memories", tag: "", description: "20 poz ile birlikte", alt: "Bunte Sofortbild- und Fotoecke" },
