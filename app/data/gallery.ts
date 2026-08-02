@@ -59,7 +59,6 @@ export const tableProjects = createItems("tables", [
   { file: "burgundy-sweets", title: "Burgundy Sweets", tag: "Tischdeko", description: "Dessert · Textil · Kerzen", alt: "Sweet Table mit bordeauxfarbenem Tischläufer" },
   { file: "sweet-gathering", title: "Sweet Gathering", tag: "Tischdeko", description: "Buffet · Blumen · Präsentation", alt: "Hochzeitsbuffet mit Cupcakes und Süßigkeiten" },
   { file: "rustic-table", title: "Rustic Table", tag: "Tischdeko", description: "Holz · Blumen · Kerzen", alt: "Rustikale Tischdekoration mit Blumen und Holz" },
-  { file: "at-your-place", title: "At Your Place", tag: "Tischdeko", description: "Serviette · Namenskarte", alt: "Personalisierte Serviette und Tischkarte" },
 ]);
 
 export const receptionProjects = createItems("reception", [
