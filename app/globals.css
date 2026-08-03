@@ -8,9 +8,11 @@
   --blush: #ead7d0;
   --gold: #b49154;
   --gold-light: #d8bd89;
-  --ink: #1c1b19;
-  --charcoal: #2c2b28;
-  --green: #23483f;
+  --ink: #24191d;
+  --charcoal: #30272a;
+  --green: #4a0014;
+  --burgundy-deep: #31000e;
+  --burgundy-soft: #6b1830;
   --line: rgba(44, 43, 40, 0.16);
   --shadow: 0 24px 70px rgba(55, 42, 28, 0.13);
 }
@@ -26,17 +28,28 @@ video { display: block; }
 button { color: inherit; }
 ::selection { background: var(--gold-light); color: var(--ink); }
 
-.site-shell { min-height: 100vh; overflow: hidden; background: radial-gradient(circle at 85% 8%, rgba(234, 215, 208, .75), transparent 25rem), var(--ivory); }
+.site-shell { min-height: 100vh; overflow: hidden; background: radial-gradient(circle at 85% 8%, rgba(107, 24, 48, .1), transparent 28rem), radial-gradient(circle at 12% 30%, rgba(234, 215, 208, .72), transparent 25rem), var(--ivory); }
 .skip-link { position: fixed; left: 1rem; top: -5rem; z-index: 100; padding: .8rem 1rem; background: var(--ink); color: white; }
 .skip-link:focus { top: 1rem; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
-.site-header { position: relative; z-index: 30; max-width: 1480px; min-height: 104px; margin: 0 auto; padding: 1.35rem clamp(1.2rem, 4vw, 4.5rem); display: grid; grid-template-columns: 210px 1fr auto; align-items: center; gap: clamp(1.2rem, 2.4vw, 2rem); }
+.site-header { position: relative; z-index: 30; max-width: 1480px; min-height: 104px; margin: 0 auto; padding: 1.2rem clamp(1.2rem, 4vw, 4.5rem); display: grid; grid-template-columns: 250px 1fr auto; align-items: center; gap: clamp(1.2rem, 2.4vw, 2rem); }
 .site-header--overlay { position: absolute; inset: 0 0 auto; width: 100%; color: #fff8ea; }
 .site-header--overlay .language-picker select { color: #fff8ea; border-color: rgba(255,255,255,.3); background: rgba(17,28,25,.3); }
 .site-header--overlay .language-picker select option { color: var(--ink); background: var(--paper); }
-.brand { width: 194px; height: 62px; display: block; }
-.brand img { object-fit: contain; object-position: left center; }
+.brand { width: 242px; min-height: 68px; display: flex; align-items: center; }
+.brand-lockup { display: grid; grid-template-columns: 58px 1fr; align-items: center; gap: .8rem; width: 100%; color: var(--burgundy-deep); }
+.brand-lockup__monogram { position: relative; width: 58px; height: 60px; display: block; color: var(--gold); font-family: "Iowan Old Style", Baskerville, Georgia, serif; filter: drop-shadow(0 3px 7px rgba(74,0,20,.12)); }
+.brand-lockup__monogram i { position: absolute; top: -3px; font-size: 4.25rem; font-weight: 400; line-height: 1; letter-spacing: -.18em; transform: skewX(-7deg); }
+.brand-lockup__monogram i:first-child { left: 0; }
+.brand-lockup__monogram i:last-child { left: 18px; top: 2px; color: var(--gold-light); transform: scaleX(.8) skewX(-10deg); }
+.brand-lockup__monogram::after { content: ""; position: absolute; left: 2px; right: -5px; top: 31px; height: 13px; border-bottom: 1px solid currentColor; transform: rotate(-16deg); opacity: .78; }
+.brand-lockup__copy { min-width: 0; display: grid; gap: .35rem; }
+.brand-lockup__copy strong { font: italic 1.35rem/1 "Iowan Old Style", Baskerville, Georgia, serif; white-space: nowrap; letter-spacing: -.02em; }
+.brand-lockup__copy small { padding-top: .35rem; border-top: 1px solid rgba(180,145,84,.5); font-size: .54rem; font-weight: 800; text-transform: uppercase; letter-spacing: .19em; white-space: nowrap; }
+.site-header--overlay .brand-lockup { color: #fff4df; }
+.site-header--overlay .brand-lockup__monogram { color: var(--gold-light); filter: drop-shadow(0 3px 9px rgba(0,0,0,.28)); }
+.site-header--overlay .brand-lockup__monogram i:last-child { color: #f3d99f; }
 .main-nav { justify-self: center; display: flex; gap: clamp(1.4rem, 3.2vw, 3.2rem); align-items: center; }
 .main-nav a { position: relative; padding: .7rem 0; font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .15em; }
 .main-nav a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 0; height: 1px; background: var(--gold); transition: right .3s ease; }
@@ -59,7 +72,7 @@ h1, h2, h3 { font-family: "Iowan Old Style", Baskerville, Georgia, "Times New Ro
 .text-link:hover span, .button:hover span { transform: translateX(3px); }
 
 .hero { position: relative; min-height: 100svh; padding: clamp(9rem, 16vh, 12rem) clamp(1.2rem, 7vw, 7.5rem) clamp(6rem, 10vh, 8rem); display: flex; align-items: center; isolation: isolate; overflow: hidden; color: #fff8ea; }
-.hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(10,18,16,.78) 0%, rgba(12,20,18,.58) 42%, rgba(12,18,16,.18) 78%, rgba(12,18,16,.25) 100%), linear-gradient(0deg, rgba(9,15,13,.4), transparent 55%); }
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(28,4,11,.8) 0%, rgba(38,7,16,.59) 42%, rgba(24,9,13,.18) 78%, rgba(20,7,11,.27) 100%), linear-gradient(0deg, rgba(25,4,10,.42), transparent 55%); }
 .hero__background { position: absolute; inset: 0; z-index: -2; }
 .hero__background video { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .hero__copy { position: relative; z-index: 2; }
@@ -142,7 +155,7 @@ h1, h2, h3 { font-family: "Iowan Old Style", Baskerville, Georgia, "Times New Ro
 .catalog-section { max-width: 1480px; margin: 0 auto; padding: clamp(3rem, 6vw, 6rem) clamp(1.2rem, 4vw, 4.5rem) clamp(7rem, 11vw, 11rem); }
 .catalog-tabs { position: sticky; top: .8rem; z-index: 15; width: min(560px, 100%); margin: 0 auto 5rem; padding: .45rem; display: grid; grid-template-columns: 1fr 1fr; gap: .4rem; border: 1px solid rgba(180,145,84,.32); border-radius: 999px; background: #f7efe3; box-shadow: 0 12px 35px rgba(48,39,29,.1); }
 .catalog-tabs button { min-height: 48px; border: 0; border-radius: 999px; background: transparent; font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; cursor: pointer; }
-.catalog-tabs button.active { color: #fff9ef; background: linear-gradient(135deg, #23483f, #152d28); box-shadow: 0 8px 22px rgba(25,50,44,.2); }
+.catalog-tabs button.active { color: #fff9ef; background: linear-gradient(135deg, #5b0c23, #31000e); box-shadow: 0 8px 22px rgba(74,0,20,.2); }
 .catalog-groups { display: grid; gap: clamp(5rem, 9vw, 8rem); }
 .catalog-group { scroll-margin-top: 7rem; }
 .catalog-group__heading { display: grid; grid-template-columns: auto 1fr auto; gap: 1.2rem; align-items: center; margin-bottom: 2rem; padding-bottom: 1.2rem; border-bottom: 1px solid rgba(44,43,40,.2); }
@@ -197,8 +210,10 @@ h1, h2, h3 { font-family: "Iowan Old Style", Baskerville, Georgia, "Times New Ro
 .inspiration-banner { margin: 0; padding: clamp(2.6rem, 5vw, 4.5rem) clamp(1.2rem, 7vw, 7.5rem); display: grid; grid-template-columns: auto minmax(0, 1050px); justify-content: center; gap: 1.4rem; align-items: start; border-top: 1px solid rgba(180,145,84,.34); border-bottom: 1px solid rgba(180,145,84,.34); background: linear-gradient(135deg, #fffaf1, #ead7d0); box-shadow: inset 0 1px 0 rgba(255,255,255,.8); }
 .inspiration-banner span { color: var(--gold); font-size: 1.45rem; }
 .inspiration-banner p { margin: 0; color: #514940; font: clamp(1.08rem, 1.8vw, 1.42rem)/1.75 Georgia, serif; }
-.site-footer { padding: 4rem clamp(1.2rem, 5vw, 5rem) 2rem; display: grid; grid-template-columns: 1fr auto 1fr; gap: 3rem; align-items: start; background: #172b27; color: #eee3d2; }
-.site-footer > div:first-child img { width: 206px; height: 70px; object-fit: contain; object-position: left; }
+.site-footer { padding: 4rem clamp(1.2rem, 5vw, 5rem) 2rem; display: grid; grid-template-columns: 1fr auto 1fr; gap: 3rem; align-items: start; background: var(--burgundy-deep); color: #eee3d2; }
+.site-footer .brand-lockup { max-width: 250px; color: #f6ead5; }
+.site-footer .brand-lockup__monogram { color: var(--gold-light); }
+.site-footer .brand-lockup__monogram i:last-child { color: #f3d99f; }
 .site-footer > div:first-child p { color: rgba(238,227,210,.58); font-size: .8rem; }
 .footer-links { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem 2rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .12em; }
 .site-footer > div:nth-child(3) { justify-self: end; display: grid; gap: .8rem; max-width: 100%; text-align: right; overflow-wrap: anywhere; font-size: .78rem; }
@@ -235,7 +250,13 @@ h1, h2, h3 { font-family: "Iowan Old Style", Baskerville, Georgia, "Times New Ro
 
 @media (max-width: 680px) {
   .site-header { padding: 1rem; gap: .6rem; }
-  .brand { width: 142px; height: 52px; }
+  .brand { width: 152px; min-height: 54px; }
+  .brand-lockup { grid-template-columns: 42px 1fr; gap: .55rem; }
+  .brand-lockup__monogram { width: 42px; height: 48px; }
+  .brand-lockup__monogram i { font-size: 3.25rem; }
+  .brand-lockup__monogram i:last-child { left: 13px; }
+  .brand-lockup__copy strong { font-size: 1rem; }
+  .brand-lockup__copy small { font-size: .4rem; letter-spacing: .12em; }
   .language-picker select { width: 74px; padding: .65rem 1.4rem .65rem .65rem; font-size: 0; }
   .language-picker select option { font-size: .72rem; }
   .hero { min-height: 100svh; padding: 8.5rem 1rem 5rem; }
