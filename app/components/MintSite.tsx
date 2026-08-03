@@ -186,11 +186,12 @@ const navLinks = ["/projects", "/details", "/studio", "/contact"];
 function BrandLockup() {
   return (
     <span className="brand-lockup" aria-hidden="true">
-      <span className="brand-lockup__monogram"><i>V</i><i>V</i></span>
-      <span className="brand-lockup__copy">
-        <strong>Velvet Vienna</strong>
-        <small>Event &amp; Organization</small>
-      </span>
+      <img
+        className="brand-lockup__image"
+        src="/brand/velvet-vienna-logo-transparent.png"
+        alt=""
+        decoding="async"
+      />
     </span>
   );
 }
