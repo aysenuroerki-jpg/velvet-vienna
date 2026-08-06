@@ -1,0 +1,25 @@
+VELVET VIENNA BUSINESS CARD - PRINT NOTES
+
+Finished trim size: 85 x 55 mm
+Artwork size: 91 x 61 mm
+Bleed: 3 mm on every edge
+Resolution: 300 DPI
+Color preparation: High-resolution RGB print PDF
+Pages: Page 1 front, Page 2 back
+
+Printer setup:
+- Print at 100% scale. Do not use Fit to page.
+- Trim 3 mm from every edge to reach the finished 85 x 55 mm size.
+- Ask the printer to convert colors with its own press/paper CMYK profile; this preserves the intended deep burgundy more reliably than a generic CMYK conversion.
+- Recommended paper: 350-400 gsm premium matte or soft-touch laminated stock.
+- Rounded corners are optional; use a small 3 mm radius if desired.
+- The gold appearance is printed artwork. For real metallic foil, ask the printer to create a separate foil plate from the gold logo and accent areas.
+
+Files:
+- velvet-vienna-business-card-print-85x55mm-3mm-bleed.pdf: send this file to the printer.
+- velvet-vienna-business-card-front-300dpi.png: front-side preview.
+- velvet-vienna-business-card-back-300dpi.png: back-side preview.
+
+QR destinations:
+- Website: https://velvetvienna.org/
+- Instagram: https://www.instagram.com/velvetvienna.events/
