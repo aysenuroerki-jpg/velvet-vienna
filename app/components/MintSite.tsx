@@ -291,7 +291,7 @@ export function MintSite({ page }: { page: SitePage }) {
         <div><BrandLockup /><p>{t.footer}</p></div>
         <div className="footer-links">{navLinks.map((href, index) => <Link key={href} href={href}>{t.nav[index]}</Link>)}</div>
         <div><a href={`mailto:${contactEmail}`}>{contactEmail}</a><a href={whatsappUrl} target="_blank" rel="noreferrer" aria-label={`WhatsApp ${whatsappLabel}`}>WhatsApp · {whatsappLabel} ↗</a><a href={instagramUrl} target="_blank" rel="noreferrer" aria-label={`Instagram ${instagramLabel}`}>Instagram · {instagramLabel} ↗</a></div>
-        <p className="copyright">© 2026 Velvet Vienna · Events &amp; Organization · {localeExtras[lang].city}</p>
+        <p className="copyright">© 2026 Velvet Vienna · Events &amp; Organizations · {localeExtras[lang].city}</p>
       </footer>
 
       {lightboxItem && <div className="lightbox" role="dialog" aria-modal="true" aria-label={lightboxItem.title} onClick={() => setLightbox(null)}>
@@ -380,7 +380,7 @@ function Studio({ t, lang }: { t: typeof copy.de; lang: Lang }) {
   return <>
     <section className="studio-hero"><div><p className="kicker">{t.studioKicker}</p><h1>{t.studioTitle}</h1><p>{t.studioText}</p></div><div className="studio-hero__images"><div><Picture item={ceremonyDetails[20]} /></div><div><Picture item={giftDetails[10]} /></div></div></section>
     <section className="values-section"><SectionHeading kicker="01 · 02 · 03" title={t.signatureTitle} /><div className="value-list">{t.values.map((value, index) => <article key={value}><span>0{index + 1}</span><h3>{value}</h3><p>{t.valueText[index]}</p></article>)}</div></section>
-    <section className="studio-quote"><p>“</p><h2>{t.studioText}</h2><span>Velvet Vienna · Events &amp; Organization · {localeExtras[lang].city}</span></section>
+    <section className="studio-quote"><p>“</p><h2>{t.studioText}</h2><span>Velvet Vienna · Events &amp; Organizations · {localeExtras[lang].city}</span></section>
     <Cta t={t} />
   </>;
 }
@@ -392,7 +392,7 @@ function Contact({ t, lang }: { t: typeof copy.de; lang: Lang }) {
     const body = [t.name, data.get("name"), t.email, data.get("email"), t.date, data.get("date"), t.place, data.get("place"), t.occasion, data.get("occasion"), "", t.idea, data.get("idea")].join("%0D%0A");
     window.location.href = `mailto:${contactEmail}?subject=Velvet Vienna · ${encodeURIComponent(String(data.get("occasion") || "Anfrage"))}&body=${body}`;
   };
-  return <section className="contact-page"><div className="contact-intro"><p className="kicker">{t.contactKicker}</p><h1>{t.contactTitle}</h1><p>{t.contactText}</p><div className="contact-details"><a href={`mailto:${contactEmail}`}>{contactEmail}</a><a href={whatsappUrl} target="_blank" rel="noreferrer" aria-label={`WhatsApp ${whatsappLabel}`}>WhatsApp · {whatsappLabel} ↗</a><a href={instagramUrl} target="_blank" rel="noreferrer" aria-label={`Instagram ${instagramLabel}`}>Instagram · {instagramLabel} ↗</a><span>{localeExtras[lang].address}</span></div></div><form className="contact-form" onSubmit={submit}><p className="kicker">Velvet Vienna · Events &amp; Organization</p><h2>{t.formTitle}</h2><div className="form-grid"><label>{t.name}<input name="name" required autoComplete="name" /></label><label>{t.email}<input name="email" type="email" required autoComplete="email" /></label><label>{t.date}<input name="date" type="date" /></label><label>{t.place}<input name="place" /></label></div><label>{t.occasion}<select name="occasion">{localeExtras[lang].occasions.map((occasion) => <option key={occasion}>{occasion}</option>)}<option>{t.invite}</option><option>{t.photo}</option><option>{t.cake}</option></select></label><label>{t.idea}<textarea name="idea" rows={5} /></label><button className="button button--gold" type="submit">{t.send} <span>↗</span></button></form></section>;
+  return <section className="contact-page"><div className="contact-intro"><p className="kicker">{t.contactKicker}</p><h1>{t.contactTitle}</h1><p>{t.contactText}</p><div className="contact-details"><a href={`mailto:${contactEmail}`}>{contactEmail}</a><a href={whatsappUrl} target="_blank" rel="noreferrer" aria-label={`WhatsApp ${whatsappLabel}`}>WhatsApp · {whatsappLabel} ↗</a><a href={instagramUrl} target="_blank" rel="noreferrer" aria-label={`Instagram ${instagramLabel}`}>Instagram · {instagramLabel} ↗</a><span>{localeExtras[lang].address}</span></div></div><form className="contact-form" onSubmit={submit}><p className="kicker">Velvet Vienna · Events &amp; Organizations</p><h2>{t.formTitle}</h2><div className="form-grid"><label>{t.name}<input name="name" required autoComplete="name" /></label><label>{t.email}<input name="email" type="email" required autoComplete="email" /></label><label>{t.date}<input name="date" type="date" /></label><label>{t.place}<input name="place" /></label></div><label>{t.occasion}<select name="occasion">{localeExtras[lang].occasions.map((occasion) => <option key={occasion}>{occasion}</option>)}<option>{t.invite}</option><option>{t.photo}</option><option>{t.cake}</option></select></label><label>{t.idea}<textarea name="idea" rows={5} /></label><button className="button button--gold" type="submit">{t.send} <span>↗</span></button></form></section>;
 }
 
 function InspirationBanner({ lang }: { lang: Lang }) {
